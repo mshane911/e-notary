@@ -6,11 +6,13 @@ const User = require("../../db/model/userModel");
 const auth = require("../../auth");
 
 router.post("/", (req, res, next) => {
+    const userEmail = req.body.email;
+    const userPassword = req.body.password;
     User.findOne({
-        email: req.body.email
+        email: userEmail
     })
         .then((user) => {
-            bcrypt.compare(req.body.password, user.password)
+            bcrypt.compare(userPassword, user.password)
                 .then((check) => {
                     if (!check) {
                         res.status(400).send({
