@@ -10,6 +10,16 @@ var usersRouter = require('./routes/user/users');
 const PORT = process.env.PORT || 9000
 var app = express();
 
+// Rate Limiting
+var RateLimit = require('express-rate-limit');
+var limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 10
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
+
 // DB CONNECTION
 const dbConnect = require("./db/dbConnect");
 dbConnect();
