@@ -4,10 +4,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../../db/model/userModel");
 const auth = require("../../auth");
+const sanitize = require("mongo-sanitize")
 
 router.post("/", (req, res, next) => {
-    const userEmail = req.body.email;
-    const userPassword = req.body.password;
+    const userEmail = sanitize(req.body.email);
+    const userPassword = sanitize(req.body.password);
     User.findOne({
         email: userEmail
     })
