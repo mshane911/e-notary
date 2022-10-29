@@ -28,7 +28,7 @@ router.post("/", (req, res, next) => {
                 });
         })
         .catch((error) => {
-            response.status(500).send({
+            res.status(500).send({
                 message: " Error hashing password",
                 error
             })

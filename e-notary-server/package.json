@@ -12,6 +12,7 @@
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
     "express": "~4.16.1",
+    "express-rate-limit": "^6.6.0",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "mongo-sanitize": "^1.1.0",
