@@ -44,7 +44,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+// ROUTES
 const registRouter = require('./routes/user/registration');
 const loginRouter = require('./routes/user/login');
 const logoutRouter = require('./routes/user/logout');
