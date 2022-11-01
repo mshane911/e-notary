@@ -1,5 +1,8 @@
 import React from 'react';
 import { CometChat } from "@cometchat-pro/chat";
+import {Routes, Route } from "react-router-dom";
+
+import Landing from './component/Landing'
 
 function App() {
   const appSetting = new CometChat.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(process.env.REACT_APP_COMET_REGION).build();
@@ -16,7 +19,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Meet your <b>E-Notary, Ben Dover</b></h1>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+      </Routes>
     </div>
   );
 }

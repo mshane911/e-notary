@@ -1,0 +1,205 @@
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #fff;
+}
+
+.appleFont{
+    font-family: 'Homemade Apple', cursive;
+    margin-left: 24px;
+}
+
+.underlineText{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.underlineText:hover{
+    color: #d3d3d3;
+}
+
+.landingSection{
+    height:100vh;
+    width: 100vw;
+}
+
+.bgImg{
+    height: 100vh;
+    width:100vw;
+    object-fit: cover;
+    z-index: -3;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.logo{
+    z-index: 0;
+    margin-top:10%;
+    margin-left: 10rem;
+}
+
+.overlay{
+    z-index: -2;
+    background: linear-gradient(90deg, rgba(30,42,82,1) 15%, rgba(0, 0, 0, 0.3) 100%);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.visibleContainer{
+    position: absolute;
+    width: 50vw;
+}
+
+.toggleContainer{
+    width: 50%;
+    display: inline-block;
+    float: right;
+}
+
+.sectionTitle, .sectionSubtitle, .signIn {
+    margin: 0 0 0 10rem;
+}
+
+.sectionSubtitle{
+    font-size: 24px;
+}
+
+.signUpBtn{
+    background-color: #fff;
+    border-radius: 16px;
+    color: #1E2A52;
+    padding: 24px;
+    width: 70%;
+    font-weight: bold;
+    font-size: 24px;
+    border: none;
+    margin: 24px 0 24px 10rem;
+    cursor: pointer;
+}
+
+.signUpBtn:hover{
+    color: #fff;
+    background-color: #727ea4;
+}
+
+.signUpBtn:active{
+    transform: translateY(3px);
+}
+
+.signIn{
+    font-size: 18px;
+}
+
+/* SIGN UP FORM */
+.formTitle{
+    text-align: center;
+    font-size: 36px;
+}
+
+.signUpForm{
+    width: 40%;
+    display: inline-block;
+
+    animation-name: floating;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+    0% { transform: translate(0,  -15px); opacity: 0;}
+    100%   { transform: translate(0, 0px); opacity: 1;}   
+}
+
+.signUpForm form{
+    color: #1E2A52;
+    position: relative;
+    border-radius: 16px;
+    padding: 24px;
+    background-color: #fff;
+    margin: 20% 10rem 20% 0;
+}
+
+.textInput{
+    border: none;
+    margin-left: 12px;
+    background-color: #e6e6e6;
+    width: 80%;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    padding:24px;
+
+}
+
+.textInput:focus{
+    border-style: none;
+}
+
+.inputContainer{
+    border: #bcbcbc solid 3px;
+    padding: 0 24px;
+    border-radius: 16px;
+    background-color: #e6e6e6;
+    margin: 12px;
+}
+
+.signUpSubmit{
+    background-color: #B20D30;
+    color: #fff;
+    border: none;
+    padding: 24px;
+    width: 90%;
+    margin: 24px 5% 24px 5%;
+    border-radius: 16px;
+    float: center;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.submitWrapper{
+    width: 100%;
+}
+
+.tncLabel{
+    text-align: center;
+
+}
+
+.tnc{
+    font-weight: bold;
+    color:#1E2A52;
+
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(21.5); /* Opera */
+  transform: scale(1.5);
+  padding: 10px;
+  margin-right: 24  px;
+}
+
+.closeBtn{
+    float: right;
+    color: #1E2A52;
+    margin: 12px;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.closeBtn:hover{
+    color: #d3d3d3;
+}
