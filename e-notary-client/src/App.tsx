@@ -3,6 +3,7 @@ import { CometChat } from "@cometchat-pro/chat";
 import {Routes, Route } from "react-router-dom";
 
 import Landing from './component/Landing'
+import Header from './component/Header'
 
 function App() {
   const appSetting = new CometChat.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(process.env.REACT_APP_COMET_REGION).build();
@@ -21,6 +22,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/header" element={<Header />} />
       </Routes>
     </div>
   );

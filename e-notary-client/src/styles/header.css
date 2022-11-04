@@ -1,0 +1,89 @@
+header{
+    background-color:#1E2A52;
+    align-items: center;
+    display: flex;
+    color: white;
+    padding: 18px 0%;
+    width: 100vw;
+    position: absolute;
+    height: 75px;
+    left: 0px;
+    top: 0px;
+}
+
+.bgLogo{
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 0;
+}
+
+.logoText{
+    width: 170px;
+    font-family: 'Homemade Apple', cursive;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 0%;
+    margin-left: 12px;
+}
+
+.logoContainer{
+    width: 10%;
+    padding-left: 48px;
+}
+
+li, a, button{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 12pt;
+    text-decoration: none;
+    color: white;
+    margin: 0 15px;
+    position: relative;
+}
+
+li, button{
+    display: inline-block;
+}
+
+.profileIcon{
+    color:#4776E6;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0 48px 0 48px;
+}
+
+.profileIcon :hover{
+    color: #A9B4C2;
+}
+
+.navLinks{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.navLinks a:hover{
+    color: #A9B4C2;
+}
+
+.logOut button{
+    display: inline-block;
+    border-radius: 16px;
+    border: none;
+    background-color:#4776E6;
+    color: white;
+    width: 100%;
+    padding: 5px 0;
+}
+
+.buttonLinks{
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.buttonLinks button:hover{
+    color: #A9B4C2;
+}
