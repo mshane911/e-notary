@@ -1,108 +1,20 @@
-body{
-    font-family: 'Source Sans Pro', sans-serif;
-    color: #fff;
-}
-
-.appleFont{
-    font-family: 'Homemade Apple', cursive;
-    margin-left: 24px;
-}
-
-.underlineText{
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.underlineText:hover{
-    color: #d3d3d3;
-}
-
-.landingSection{
-    height:100vh;
-    width: 100vw;
-}
-
-.bgImg{
-    height: 100vh;
-    width:100vw;
-    object-fit: cover;
-    z-index: -3;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.logo{
-    z-index: 0;
-    margin-top:10%;
-    margin-left: 10rem;
-}
-
-.overlay{
-    z-index: -2;
-    background: linear-gradient(90deg, rgba(30,42,82,1) 15%, rgba(0, 0, 0, 0.3) 100%);
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.visibleContainer{
-    position: absolute;
-    width: 50vw;
-}
-
-.toggleContainer{
-    width: 50%;
-    display: inline-block;
-    float: right;
-}
-
-.sectionTitle, .sectionSubtitle, .signIn {
-    margin: 0 0 0 10rem;
-}
-
-.sectionSubtitle{
-    font-size: 24px;
-}
-
-.signUpBtn{
-    background-color: #fff;
-    border-radius: 16px;
-    color: #1E2A52;
-    padding: 24px;
-    width: 70%;
-    font-weight: bold;
-    font-size: 24px;
-    border: none;
-    margin: 24px 0 24px 10rem;
-    cursor: pointer;
-}
-
-.signUpBtn:hover{
-    color: #fff;
-    background-color: #727ea4;
-}
-
-.signUpBtn:active{
-    transform: translateY(3px);
-}
-
-.signIn{
-    font-size: 18px;
-}
-
 /* SIGN UP FORM */
+#signUp{
+    display: flex;
+}
+
 .formTitle{
     text-align: center;
     font-size: 36px;
+    margin-bottom: 8px;
 }
 
-.signUpForm{
-    width: 40%;
-    display: inline-block;
+.formSubtitle{
+    text-align: center;
+    margin-top: 0;
+}
 
+.formContainer{
     animation-name: floating;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -111,16 +23,38 @@ body{
 
 @keyframes floating {
     0% { transform: translate(0,  -15px); opacity: 0;}
-    100%   { transform: translate(0, 0px); opacity: 1;}   
+    100%   { transform: translate(0, 0); opacity: 1;}   
 }
 
-.signUpForm form{
+.formContainer{
+    width: 100%; 
+    /* height: 100%; */
+    margin: 48px 0;
+    display: none;  
+    justify-content: center;
+}
+
+.formContainer form{
     color: #1E2A52;
     position: relative;
     border-radius: 16px;
-    padding: 24px;
+    padding: 2%;
     background-color: #fff;
-    margin: 20% 10rem 20% 0;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formContent{
+    width: 80%;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
 .textInput{
@@ -130,7 +64,7 @@ body{
     width: 80%;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
-    padding:24px;
+    padding:2%;
 
 }
 
@@ -146,17 +80,17 @@ body{
     margin: 12px;
 }
 
-.signUpSubmit{
+.signUpSubmit, .signInSubmit{
     background-color: #B20D30;
     color: #fff;
     border: none;
-    padding: 24px;
+    padding: 3%;
     width: 90%;
     margin: 24px 5% 24px 5%;
     border-radius: 16px;
     float: center;
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -202,4 +136,137 @@ input[type=checkbox]
 
 .closeBtn:hover{
     color: #d3d3d3;
+}
+
+.selectWrapper{
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    border: #bcbcbc solid 3px;
+    width: 100%;
+    padding: 2%;
+    border-radius: 16px;
+    /* background-color: #e6e6e6; */
+    margin: 24px 0;
+    justify-content: center;
+    display: block;
+}
+
+/* BASIC STYLES */
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #fff;
+}
+
+.appleFont{
+    font-family: 'Homemade Apple', cursive;
+    margin-left: 24px;
+}
+
+.underlineText{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.underlineText:hover{
+    color: #d3d3d3;
+}
+
+.landingSection{
+    height:100vh;
+    width: 100vw;
+}
+
+.overlay{
+    z-index: -2;
+    background: linear-gradient(90deg, rgba(30,42,82,1) 15%, rgba(0, 0, 0, 0.3) 100%);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.bgImg{
+    height: 100vh;
+    width:100vw;
+    object-fit: cover;
+    z-index: -3;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.logo{
+    margin-left: 48px;
+    max-width: 100vw;
+    display: block;
+}
+
+.sectionTitle, .sectionSubtitle, .signInText {
+    margin: 0 0 0 48px;
+    display: block;
+    width: 100%;
+}
+
+.sectionSubtitle{
+    font-size: 24px;
+}
+
+.visibleContainer, .toggleContainer{
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    margin:0;
+}
+
+.toggleContainer{
+    right: 0;
+}
+
+.visibleContainerContent{
+    margin: 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    align-content: center;
+}
+
+.signUpBtn{
+    background-color: #fff;
+    border-radius: 16px;
+    color: #1E2A52;
+    padding: 24px;
+    width: 80%;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    margin: 24px 0 24px 48px;
+}
+
+.signUpBtn:hover{
+    color: #fff;
+    background-color: #727ea4;
+}
+
+.signUpBtn:active{
+    transform: translateY(3px);
+}
+
+.signInText{
+    font-size: 18px;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-device-width: 667px){
+    .visibleContainer, .toggleContainer{width: 100vw;}
+    .visibleContainerContent{margin:0;justify-content: center;}
+    .logo, .sectionTitle, .sectionSubtitle {margin-left: 0; max-width: 80vw;}
+    .sectionSubtitle, .signInText, .signUpSubmit{font-size: 16px;}
+    .tncLabel{font-size: 12px;}
+    .signUpBtn{font-size:14px;width:80vw;margin-left: 0;}
+    .formTitle{font-size: 20px;}
 }
