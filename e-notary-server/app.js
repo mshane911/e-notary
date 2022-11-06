@@ -58,9 +58,9 @@ app.use('/api/register/', registRouter);
 app.use('/api/login/', loginRouter);
 app.use('/api/logout/', logoutRouter);
 app.use('/api/users', usersRouter);
-app.use('/api/createUsignToken', createUsignTokenRouter);
-app.use('/api/authUsignToken', authUsignTokenRouter);
-app.use('/api/signDocument', signDocumentRouter);
+app.use('/api/usign/createUsignToken', createUsignTokenRouter);
+app.use('/api/usign/authUsignToken', authUsignTokenRouter);
+app.use('/api/usign/signDocument', signDocumentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
