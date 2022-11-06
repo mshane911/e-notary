@@ -48,6 +48,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 const registRouter = require('./routes/user/registration');
 const loginRouter = require('./routes/user/login');
 const logoutRouter = require('./routes/user/logout');
+const createUsignTokenRouter = require('./routes/usign/createToken');
+const authUsignTokenRouter = require('./routes/usign/authToken');
+const signDocumentRouter = require('./routes/usign/signDocument')
 
 app.use('/', indexRouter);
 app.use('/api/', indexRouter);
@@ -55,6 +58,9 @@ app.use('/api/register/', registRouter);
 app.use('/api/login/', loginRouter);
 app.use('/api/logout/', logoutRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/createUsignToken', createUsignTokenRouter);
+app.use('/api/authUsignToken', authUsignTokenRouter);
+app.use('/api/signDocument', signDocumentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
