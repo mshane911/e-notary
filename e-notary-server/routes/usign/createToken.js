@@ -1,6 +1,6 @@
-var axios = require('axios');
-var express = require('express');
-var router = express.Router();
+const axios = require('axios');
+const express = require('express');
+const router = express.Router();
 
 router.post("/", (req, res, next) => {
     var config = {
@@ -15,7 +15,7 @@ router.post("/", (req, res, next) => {
             res.send(apiRes.data)
         })
         .catch((err) => {
-            console.log(err)
+            res.send(err.message)
         })
 });
 
