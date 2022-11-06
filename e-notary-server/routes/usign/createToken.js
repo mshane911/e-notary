@@ -15,7 +15,7 @@ router.post("/", (req, res, next) => {
             res.send(apiRes.data)
         })
         .catch((err) => {
-            res.send(err.message)
+            res.send({message: err.message})
         })
 });
 
