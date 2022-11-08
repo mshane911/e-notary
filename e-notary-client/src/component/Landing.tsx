@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { redirect } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from "axios"
 import { faUser, faEnvelope, faLock, faX } from '@fortawesome/free-solid-svg-icons'
@@ -11,6 +12,7 @@ export default function Landing() {
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
 
+    // Modal Functions
     const openSignUpForm = () => {
         document.getElementById("signIn").style.display = "none"
         document.getElementById("signUp").style.display = "flex"
@@ -29,16 +31,28 @@ export default function Landing() {
         document.getElementById("signIn").style.display = "none"
     }
 
-    function checkPassword(){
-        return password == passwordConfirm ? true : false
+    // POST for Sign Up
+    function checkValiditySignUp(){
+        name === "" ?  document.getElementById('nameError').style.visibility = "visible" : document.getElementById('nameError').style.visibility = "hidden"
+        email === "" ? document.getElementById('emailError').style.visibility = "visible" : document.getElementById('emailError').style.visibility = "hidden"
+        password.length < 8 ? document.getElementById('passError').style.visibility = "visible" : document.getElementById('passError').style.visibility = "hidden"
+        passwordConfirm === "" || password !== passwordConfirm ?  document.getElementById('passError2').style.visibility = "visible" :  document.getElementById('passError2').style.visibility = "hidden"
+        userType === "" ?  document.getElementById('typeError').style.visibility = "visible" :  document.getElementById('typeError').style.visibility = "hidden"
+
+        if(name === "" || email === "" || password.length < 8 || passwordConfirm === "" || passwordConfirm !== password || userType === ""){
+            return false
+        }
+        return true
     }
 
-    // TODO: add check password the same or not
-    const submitForm = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.FormEvent<HTMLFormElement>) => {
-        const isPasswordSame = checkPassword();
-        if (!isPasswordSame) {
+    const submitSignUp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.FormEvent<HTMLFormElement>) => {
+        const isValid = checkValiditySignUp();
+
+        if (!isValid) {
             e.preventDefault();
         }
+
+        alert(userType)
 
         const config = {
             method: "POST",
@@ -54,6 +68,43 @@ export default function Landing() {
             .then(
                 (result) => {
                     console.log(result)
+                }
+            )
+            .catch(
+                (err) => {
+                    console.log(err)
+                }
+            );
+    }
+
+    // TO DO: Check with DB, show error msg
+    //POST for Sign In
+    function checkValiditySignIn(){
+        return true
+    }
+
+    const submitSignIn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.FormEvent<HTMLFormElement>) => {
+        const isValid = checkValiditySignUp();
+
+        if (!isValid) {
+            e.preventDefault();
+        }
+
+        alert(userType)
+
+        const config = {
+            method: "POST",
+            url: "/api/login/",
+            data: {
+                email,
+                password
+            }
+        }
+        axios(config)
+            .then(
+                (result) => {
+                    console.log(result)
+                    return redirect("/login"); // TODO: change to user dashboard
                 }
             )
             .catch(
@@ -87,31 +138,41 @@ export default function Landing() {
                     <form>
                         <FontAwesomeIcon icon={faX} className="closeBtn" onClick={closeSignUpForm} />
                         <h2 className='formTitle'>Create An Account</h2>
-                        <p className='formSubtitle'>Welcome to E-Notary, Please fill in your details below</p>
+                        <p className='formSubtitle'>Welcome to E-Notary, <br className='hiddenDesktop'></br>Please fill in your details below</p>
                         <div className='formContent'>
                             <div className='inputContainer'>
-                                <FontAwesomeIcon icon={faUser} />
-                                <input type="text" className="textInput" placeholder="Full Name" name="name" onChange={(e) => setName(e.target.value)} required></input>
+                                <FontAwesomeIcon icon={faUser} className="formIcon" />
+                                <input type="text" id="name" className="textInput" placeholder="Full Name" name="name" onChange={(e) => setName(e.target.value)} required></input>
                             </div>
+                            <small id="nameError">Please enter your name!</small>
+
                             <div className='inputContainer'>
-                            <FontAwesomeIcon icon={faEnvelope} />
-                                <input type="text" className="textInput" placeholder="Email" name="email" onChange={(e) => setEmail(e.target.value)} required></input>
+                            <FontAwesomeIcon icon={faEnvelope} className="formIcon" />
+                                <input type="text" id="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" className="textInput" placeholder="Email" name="email" onChange={(e) => setEmail(e.target.value)} required></input>
                             </div>
+                            <small id="emailError">Please enter a valid email!</small>
+
                             <div className='inputContainer'>
-                                <FontAwesomeIcon icon={faLock} />
-                                <input type="password"  autoComplete='on' className="textInput" placeholder="Password" name="pass" onChange={(e) => setPassword(e.target.value)} required></input>
-                            </div>
+                                <FontAwesomeIcon icon={faLock} className="formIcon" />
+                                <input type="password" id="pass" autoComplete='on' className="textInput" placeholder="Password" name="pass" onChange={(e) => setPassword(e.target.value)} required></input>
+                            </div> 
+                            <small id="passError">Please enter a password (min. 8 characters) </small>
+
                             <div className='inputContainer'>
-                                <FontAwesomeIcon icon={faLock} />
-                                <input type="password" autoComplete='on' className="textInput" placeholder="Confirm Your Password" name="passconfirm" onChange={(e) => { setPasswordConfirm(e.target.value)}} required></input>
+                                <FontAwesomeIcon icon={faLock} className="formIcon" />
+                                <input type="password" id="passConfirm" autoComplete='on' className="textInput" placeholder="Confirm Your Password" name="passconfirm" onChange={(e) => { setPasswordConfirm(e.target.value)}} required></input>
                             </div>
+                            <small id="passError2">Please input the same password!</small>
+
                             <div className="inputWrapper">
-                                <select className='selectWrapper' onChange={(e) => setUserType(e.target.value)}>
-                                    <option defaultValue="" disabled >Select Account Type</option>
+                                <select className='selectWrapper' id="type" onChange={(e) => setUserType(e.target.value)}>
+                                    <option selected disabled>Select Account Type</option>
                                     <option value="employee">Employee</option>
                                     <option value="company">Company</option>
+                                    <option value="notary">Notary</option> 
                                 </select>
                             </div>
+                            <small id="typeError">Please select your account type!</small>
                         </div>
                         <div className='tncLabel'>
                             <input type="checkbox" name="tnc" value="tnc" required />
@@ -119,7 +180,7 @@ export default function Landing() {
                         </div>
 
                         <div className='submitWrapper'>
-                            <input type="submit" value="Create Account" className='signUpSubmit' onClick={submitForm}></input>
+                            <input type="submit" value="Create Account" className='signUpSubmit' onClick={submitSignUp}></input>
                         </div>
                         
                     </form>
@@ -132,17 +193,21 @@ export default function Landing() {
                         <p className='formSubtitle'>Please Fill in Your Details </p>
                         <div className='formContent'>
                             <div className='inputContainer'>
-                            <FontAwesomeIcon icon={faEnvelope} />
+                            <FontAwesomeIcon icon={faEnvelope} className="formIcon" />
                                 <input type="text" className="textInput" placeholder="Email" name="email" onChange={(e) => setEmail(e.target.value)} required></input>
                             </div>
+                            <small id="signInEmail">Please enter a valid email!</small>
+
                             <div className='inputContainer'>
-                                <FontAwesomeIcon icon={faLock} />
+                                <FontAwesomeIcon icon={faLock} className="formIcon" />
                                 <input type="password" autoComplete='on' className="textInput" placeholder="Password" name="pass" onChange={(e) => setPassword(e.target.value)} required></input>
                             </div>
+                            <small id="signInPassword">Please enter a valid password!</small>
+
                         </div>
 
                         <div className='submitWrapper'>
-                            <input type="submit" value="Sign In" className='signInSubmit'></input>
+                            <input type="submit" value="Sign In" className='signInSubmit' onClick={submitSignIn}></input>
                         </div>
                         
                     </form>
