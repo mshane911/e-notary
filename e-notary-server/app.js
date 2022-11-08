@@ -48,9 +48,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 const registRouter = require('./routes/user/registration');
 const loginRouter = require('./routes/user/login');
 const logoutRouter = require('./routes/user/logout');
+
 const createUsignTokenRouter = require('./routes/usign/createToken');
 const authUsignTokenRouter = require('./routes/usign/authToken');
-const signDocumentRouter = require('./routes/usign/signDocument')
+const signDocumentRouter = require('./routes/usign/signDocument');
+
+const createBotRouter = require('./routes/langcode/createBot');
+const deleteBotRouter = require('./routes/langcode/deleteBot');
+const getBotsRouter = require('./routes/langcode/getBots');
+// // const uploadFileToBotRouter = require('./routes/langcode/uploadFileToBot');
+const getDocumentsInBotRouter = require('./routes/langcode/getDocumentsInBot');
+const deleteDocumentRouter = require('./routes/langcode/deleteDocument');
+const sendMessageToBotRouter = require('./routes/langcode/sendMessageToBot');
+const getMessagesInSessionRouter = require('./routes/langcode/getMessagesInSession');
+const clearMessagesInSessionRouter = require('./routes/langcode/clearMessagesInSession');
 
 app.use('/', indexRouter);
 app.use('/api/', indexRouter);
@@ -58,9 +69,20 @@ app.use('/api/register/', registRouter);
 app.use('/api/login/', loginRouter);
 app.use('/api/logout/', logoutRouter);
 app.use('/api/users', usersRouter);
+
 app.use('/api/usign/createUsignToken', createUsignTokenRouter);
 app.use('/api/usign/authUsignToken', authUsignTokenRouter);
 app.use('/api/usign/signDocument', signDocumentRouter);
+
+app.use('/api/langcode/createBot', createBotRouter);
+app.use('/api/langcode/deleteBot', deleteBotRouter);
+app.use('/api/langcode/getBots', getBotsRouter);
+// // app.use('/api/langcode/uploadFileToBot', uploadFileToBotRouter);
+app.use('/api/langcode/getDocumentsInBot', getDocumentsInBotRouter);
+app.use('/api/langcode/deleteDocument', deleteDocumentRouter);
+app.use('/api/langcode/sendMessageToBot', sendMessageToBotRouter);
+app.use('/api/langcode/getMessagesInSession', getMessagesInSessionRouter);
+app.use('/api/langcode/clearMessagesInSession', clearMessagesInSessionRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
