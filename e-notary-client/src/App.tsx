@@ -3,6 +3,7 @@ import { CometChat } from "@cometchat-pro/chat";
 import {Routes, Route } from "react-router-dom";
 
 import Landing from './component/Landing'
+import Home from './component/Home'
 import Header from './component/Header'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/header" element={<Header />} />
       </Routes>
     </div>
