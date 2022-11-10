@@ -5,10 +5,7 @@ header{
     color: white;
     padding: 18px 0%;
     width: 100vw;
-    position: absolute;
-    height: 75px;
-    left: 0px;
-    top: 0px;
+    height: auto;
 }
 
 .bgLogo{

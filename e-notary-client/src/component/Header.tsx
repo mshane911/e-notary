@@ -1,9 +1,40 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
+
 import '../styles/header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios'
 
 export default function Header(){
+    const navigate = useNavigate()
+
+    const userLogOut = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const config = {
+            method: "POST",
+            url: "/api/logout/"
+        }
+
+        axios(config)
+            .then(
+                (res) => {
+                    console.log(res.data.message)
+                    navigate('/' , {replace: true}) // change localhost/email=?pass=? to the home page
+                    
+                }
+            )
+            .catch(
+                (err) => {
+                    alert(err)
+                    console.log(err)
+                }
+            );
+
+        return false
+    }
+
     return (
         <header>
             <div className = "logoContainer">
@@ -18,7 +49,7 @@ export default function Header(){
                 </ul>
             </nav>
             <ul className='buttonLinks'>
-                <li><a className='logOut' href = "#logout"><button>Log Out</button></a></li>
+                <li><a className='logOut'><button onClick={userLogOut}>Log Out</button></a></li>
                 <li><FontAwesomeIcon icon={faCircleUser} className='profileIcon'/></li>
             </ul>
         </header>
