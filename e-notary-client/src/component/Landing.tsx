@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from "axios"
 import { faUser, faEnvelope, faLock, faX } from '@fortawesome/free-solid-svg-icons'
 import '../styles/landing.css'
 
 export default function Landing() {
+    const navigate = useNavigate()
+
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [userType, setUserType] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
+
+    const [userEmail, setUserEmail] = useState("")
+    const [userPass, setUserPass] = useState("")
 
     // Modal Functions
     const openSignUpForm = () => {
@@ -45,14 +50,12 @@ export default function Landing() {
         return true
     }
 
-    const submitSignUp = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.FormEvent<HTMLFormElement>) => {
+    const submitSignUp = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.FormEvent<HTMLFormElement>) => {
         const isValid = checkValiditySignUp();
 
         if (!isValid) {
             e.preventDefault();
         }
-
-        alert(userType)
 
         const config = {
             method: "POST",
@@ -77,41 +80,44 @@ export default function Landing() {
             );
     }
 
-    // TO DO: Check with DB, show error msg
     //POST for Sign In
     function checkValiditySignIn(){
+        userEmail === "" ? document.getElementById('signInEmail').style.visibility = "visible" : document.getElementById('signInEmail').style.visibility = "hidden"
+        userPass === "" ? document.getElementById('signInPassword').style.visibility = "visible" : document.getElementById('signInPassword').style.visibility = "hidden"
+
         return true
     }
 
     const submitSignIn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.FormEvent<HTMLFormElement>) => {
-        const isValid = checkValiditySignUp();
-
-        if (!isValid) {
-            e.preventDefault();
-        }
-
-        alert(userType)
+        e.preventDefault();
 
         const config = {
             method: "POST",
             url: "/api/login/",
             data: {
-                email,
-                password
+                userEmail,
+                userPass
             }
         }
+
         axios(config)
             .then(
-                (result) => {
-                    console.log(result)
-                    return redirect("/login"); // TODO: change to user dashboard
+                (res) => {
+                    alert(res.data.message)
+                    navigate('/home' , {replace: true})
+                    
                 }
             )
             .catch(
                 (err) => {
+                    alert(err)
                     console.log(err)
                 }
             );
+
+        
+
+        return false
     }
 
     useEffect(() => {
@@ -194,13 +200,13 @@ export default function Landing() {
                         <div className='formContent'>
                             <div className='inputContainer'>
                             <FontAwesomeIcon icon={faEnvelope} className="formIcon" />
-                                <input type="text" className="textInput" placeholder="Email" name="email" onChange={(e) => setEmail(e.target.value)} required></input>
+                                <input type="text" className="textInput" placeholder="Email" name="email" onChange={(e) => setUserEmail(e.target.value)} required></input>
                             </div>
                             <small id="signInEmail">Please enter a valid email!</small>
 
                             <div className='inputContainer'>
                                 <FontAwesomeIcon icon={faLock} className="formIcon" />
-                                <input type="password" autoComplete='on' className="textInput" placeholder="Password" name="pass" onChange={(e) => setPassword(e.target.value)} required></input>
+                                <input type="password" autoComplete='on' className="textInput" placeholder="Password" name="pass" onChange={(e) => setUserPass(e.target.value)}     required></input>
                             </div>
                             <small id="signInPassword">Please enter a valid password!</small>
 

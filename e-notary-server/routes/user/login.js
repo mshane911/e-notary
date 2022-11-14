@@ -7,15 +7,16 @@ const auth = require("../../auth");
 const sanitize = require("mongo-sanitize")
 
 router.post("/", (req, res, next) => {
-    const userEmail = sanitize(req.body.email);
-    const userPassword = sanitize(req.body.password);
-    User.findOne({
-        email: userEmail
+    const userEmail = sanitize(req.body.userEmail);
+    const userPassword = sanitize(req.body.userPass);
+    User.findOne({ 
+        email: userEmail 
     })
-        .then((user) => {
+        .then(user => {
+
             bcrypt.compare(userPassword, user.password)
                 .then((check) => {
-                    if (!check) {
+                        if (!check) {
                         res.status(400).send({
                             message: "Passwords mismatch!",
                             error: error.message
@@ -30,6 +31,7 @@ router.post("/", (req, res, next) => {
                         },
                         process.env.ACCESS_TOKEN_SECRET, { expiresIn: "24h" }
                     );
+                    console.log('access token: ', accesstoken) // del later
 
                     res
                         .status(200)
@@ -41,13 +43,15 @@ router.post("/", (req, res, next) => {
                             user: user,
                             accesstoken
                         });
-                })
-                .catch((error) => {
-                    res.status(400).send({
-                        message: "Passwords mismatch!",
-                        error: error.message
-                    });
+
+            })
+            .catch((error) => {
+                res.status(400).send({
+                    message: "Passwords mismatch!",
+                    error: error.message
                 });
+            });
+
         })
         .catch((error) => {
             res.status(404).send({
