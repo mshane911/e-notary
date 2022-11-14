@@ -1,7 +1,7 @@
 .text{
     font-family: 'Source Sans Pro', sans-serif;
-    margin-top: 100px;
-    margin-left: 50px;
+    margin-top: 48px;
+    margin-left: 48px;
 }
 .johndoe{
     color:#1E2A52;
@@ -28,17 +28,20 @@
     border-radius: 5px;
 }
 .td2, .td3{
-    width:5vw;
+    width:5%;
+    text-align: center;
 }
+
 .ptd1{
     color:#1E2A52;
     font-size: 16px;
     padding-left: 20px;
 }
+
 .ptd2, .ptd3{
     color:#1E2A52;
     font-size: 22px;
-    padding-right: 40px;
+    /* padding-right: 24px; */
 }
 
 .table2{
