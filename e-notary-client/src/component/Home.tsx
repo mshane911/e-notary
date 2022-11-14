@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../styles/home.css'
 import Header from './Header'
 
@@ -6,8 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
 
-export default function Home()
-{
+export default function Home(){
+    useEffect(() => {
+        document.title = "Welcome to your dashboard"
+    })
+    
+    // TODO: Get user name
     return(
         <div>
             <Header />

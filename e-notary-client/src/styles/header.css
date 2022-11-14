@@ -6,36 +6,31 @@ header{
     padding: 18px 0%;
     width: 100vw;
     height: auto;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+button{
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .bgLogo{
-    width: 100%;
+    width: 60%;
     object-fit: cover;
     margin-bottom: 0;
 }
 
 .logoText{
-    width: 170px;
     font-family: 'Homemade Apple', cursive;
     font-style: normal;
     font-weight: bold;
-    font-size: 23px;
-    line-height: 0%;
-    margin-left: 12px;
+    font-size: 1.5vw;
+    margin: 0;
+    white-space: nowrap;
 }
 
 .logoContainer{
-    width: 10%;
-    padding-left: 48px;
-}
-
-li, a, button{
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 12pt;
-    text-decoration: none;
-    color: white;
-    margin: 0 15px;
-    position: relative;
+    width: 15%;
+    margin-left: 48px;
 }
 
 li, button{
@@ -45,9 +40,9 @@ li, button{
 .profileIcon{
     color:#4776E6;
     display: inline-block;
-    width: 30px;
-    height: 30px;
-    margin: 0 48px 0 48px;
+    width: 40px;
+    height: 100%;
+    margin: 0 24px;
 }
 
 .profileIcon :hover{
@@ -55,32 +50,64 @@ li, button{
 }
 
 .navLinks{
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
+}
+
+.link a{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    margin: 0 15px;
+    position: relative;
 }
 
 .navLinks a:hover{
     color: #A9B4C2;
 }
 
-.logOut button{
+.logOutBtn{
+    font-size: 20px;
     display: inline-block;
     border-radius: 16px;
     border: none;
     background-color:#4776E6;
     color: white;
     width: 100%;
-    padding: 5px 0;
+    padding: 10px 0;
 }
 
 .buttonLinks{
-    width: 20%;
+    width: 25%;
     display: flex;
     align-items: center;
+    margin-right: 48px;
 }
 
 .buttonLinks button:hover{
     color: #A9B4C2;
+}
+
+.bgLogoMobile, .navToggle{
+    display: none;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-device-width: 768px){
+    .logoContainer{width:10%;}
+    .bgLogo{width: 100%;}
+    .link a, .logOutBtn{font-size:16px;margin:0 8px;}
+}
+
+@media only screen and (max-device-width: 667px){
+    header{padding: 8px 0%;}
+    .link a, .logOutBtn, .profileIcon{display: none;}
+    .logoContainer{width:80%;display:flex;align-items:center;}
+    .logoText{font-size:4vw;display: inline-block;}
+    .bgLogoMobile{height:24px;display: inline-block;margin-right:8px;height:6vw;}
+    .bgLogo{display: none;}
+    .navToggle{display: inline-block; width:10%; float:right;margin-right:24px;}
+    .hamburgerIcon{height:100%;}
 }

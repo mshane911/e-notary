@@ -80,7 +80,6 @@ export default function Landing() {
             );
     }
 
-    // TO DO: Check with DB, show error msg
     //POST for Sign In
     function checkValiditySignIn(){
         userEmail === "" ? document.getElementById('signInEmail').style.visibility = "visible" : document.getElementById('signInEmail').style.visibility = "hidden"
@@ -90,12 +89,6 @@ export default function Landing() {
     }
 
     const submitSignIn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.FormEvent<HTMLFormElement>) => {
-        // const isValid = checkValiditySignIn();
-
-        // if (!isValid) {
-        //     e.preventDefault();
-        // }
-
         e.preventDefault();
 
         const config = {
@@ -111,9 +104,7 @@ export default function Landing() {
             .then(
                 (res) => {
                     alert(res.data.message)
-                    // alert(res.data.accesstoken)                    
-                    // return <Redirect to="/home">; // TODO: change to user dashboard
-                    navigate('/home' , {replace: true}) // change localhost/email=?pass=? to the home page
+                    navigate('/home' , {replace: true})
                     
                 }
             )
