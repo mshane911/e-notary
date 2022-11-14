@@ -1,0 +1,35 @@
+.signtable,td{
+    width:70vw;
+    height:3vw;
+    border:1px solid;
+    color:#1E2A52;
+}
+.blankgap{
+    width:5vw;
+    height:3vw;
+}
+
+.filenametext{
+    color:#1E2A52;
+    padding-left: 10px;
+}
+.cancelbutton{
+    margin-left: 715px;
+    display: inline-block;
+    border-radius: 5px;
+    border: none;
+    background-color:#B20D30;
+    color: white;
+    width: 15vw;
+    height: 2.2vw;
+}
+
+.generatesignaturebutton{
+    display: inline-block;
+    border-radius: 5px;
+    border: none;
+    background-color:#1E2A52;
+    color: white;
+    width: 90vw;
+    height: 3vw;
+}

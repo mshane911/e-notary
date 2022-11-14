@@ -5,7 +5,7 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 
 export default function Header(){
     return (
-        <header>
+        <header className='header'>
             <div className = "logoContainer">
                 <img src = {require('../media/logo.png')} className="bgLogo"></img>
                 <h2 className='logoText'>E-Notary</h2>
@@ -18,7 +18,7 @@ export default function Header(){
                 </ul>
             </nav>
             <ul className='buttonLinks'>
-                <li><a className='logOut' href = "#logout"><button>Log Out</button></a></li>
+                <li><a href = "#logout"><button className='logOut'>Log Out</button></a></li>
                 <li><FontAwesomeIcon icon={faCircleUser} className='profileIcon'/></li>
             </ul>
         </header>

@@ -19,10 +19,10 @@ export default function Home()
                 <tr>
                     <td className="td1"><p className="ptd1">Upload your document here</p></td>
                     <td className="td2">
-                        <a className="clickable" href="#link"><button><FontAwesomeIcon icon={faLink} className="ptd2"/></button></a>
+                        <a href="#link"><button className="homebuttons"><FontAwesomeIcon icon={faLink} className="ptd2"/></button></a>
                     </td>
                     <td className="td3">
-                        <a className="clickable" href="#camera"><button><FontAwesomeIcon icon={faCamera} className="ptd3"/></button></a>
+                        <a href="#camera"><button className="homebuttons"><FontAwesomeIcon icon={faCamera} className="ptd3"/></button></a>
                     </td>
                 </tr>
             </table>
@@ -30,11 +30,11 @@ export default function Home()
             <table className="table2">
                 <tr>
                     <td className="td4">
-                        <a className="clickable" href="#verifythisdocument"><button><b>Verify This Document</b></button></a>
+                        <a href="#verifythisdocument"><button className="homebuttons"><b>Verify This Document</b></button></a>
                     </td>
                     <td className="blanktd"></td>
                     <td className="td5">
-                        <a className="clickable" href="#addyoursignature"><button><b>Add Your Signature</b></button></a>
+                        <a href="#addyoursignature"><button className="homebuttons"><b>Add Your Signature</b></button></a>
                     </td>
                 </tr>
             </table>

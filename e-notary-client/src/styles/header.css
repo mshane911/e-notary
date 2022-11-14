@@ -1,4 +1,4 @@
-header{
+.header{
     background-color:#1E2A52;
     align-items: center;
     display: flex;
@@ -12,7 +12,7 @@ header{
 }
 
 .bgLogo{
-    width: 100%;
+    width: 50%;
     object-fit: cover;
     margin-bottom: 0;
 }
@@ -28,11 +28,11 @@ header{
 }
 
 .logoContainer{
-    width: 10%;
+    width: 20%;
     padding-left: 48px;
 }
 
-li, a, button{
+.navLinks ul, li, a{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 12pt;
     text-decoration: none;
@@ -41,8 +41,23 @@ li, a, button{
     position: relative;
 }
 
-li, button{
+.navLinks ul{
+    padding: 0;
+}
+
+.buttonLinks button{
     display: inline-block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 12pt;
+    text-decoration: none;
+    color: white;
+    margin: 0 15px;
+    position: relative; 
+}
+
+.navLinks li{
+    display: inline-block;
+
 }
 
 .profileIcon{
@@ -58,7 +73,7 @@ li, button{
 }
 
 .navLinks{
-    width: 70%;
+    width: 50%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -68,7 +83,7 @@ li, button{
     color: #A9B4C2;
 }
 
-.logOut button{
+.logOut{
     display: inline-block;
     border-radius: 16px;
     border: none;
@@ -82,6 +97,7 @@ li, button{
     width: 20%;
     display: flex;
     align-items: center;
+    list-style: none;
 }
 
 .buttonLinks button:hover{

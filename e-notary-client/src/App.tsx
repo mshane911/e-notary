@@ -4,7 +4,8 @@ import {Routes, Route } from "react-router-dom";
 
 import Landing from './component/Landing'
 import Home from './component/Home'
-import Header from './component/Header'
+//import Header from './component/Header'
+import SignaturePage from './component/SignaturePage'
 
 function App() {
   const appSetting = new CometChat.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(process.env.REACT_APP_COMET_REGION).build();
@@ -24,7 +25,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/header" element={<Header />} />
+        {/* <Route path="/header" element={<Header />} /> */}
+        <Route path="/signaturepage" element={<SignaturePage />} />
       </Routes>
     </div>
   );
