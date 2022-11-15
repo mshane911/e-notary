@@ -8,10 +8,12 @@ import axios from 'axios'
 
 export default function Header(){
     const navigate = useNavigate()
+    var isMobileNavOpen = false
 
-    const userLogOut = (e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.FormEvent<HTMLFormElement>) => {
+    function userLogOut(e: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLAnchorElement, MouseEvent>){
         e.preventDefault();
 
+        console.log("logging out!")
         const config = {
             method: "POST",
             url: "/api/logout/"
@@ -35,6 +37,18 @@ export default function Header(){
         return false
     }
 
+    function openNavBar(){
+        if(isMobileNavOpen == false){
+            document.getElementById("mobileLink").style.display = "block"
+            isMobileNavOpen = true
+        }
+        else{
+            document.getElementById("mobileLink").style.display = "none"
+            isMobileNavOpen = false
+        }
+
+    }
+
     return (
         <header>
             <div className = "logoContainer">
@@ -54,10 +68,18 @@ export default function Header(){
                 <FontAwesomeIcon icon={faCircleUser} className='profileIcon'/>
             </div>
 
-            <div className='navToggle'>
+            <div className='navToggle' onClick={openNavBar}>
                 <FontAwesomeIcon icon={faBars} className='hamburgerIcon'/>
             </div>
-            <nav className='mobileLink'></nav>
+            <nav className='mobileLink' id="mobileLink">
+                <ul>
+                    <li className="moblink"><a href = "#verifyDocument">Verify Document</a></li>
+                    <li className="moblink"><a href = "#uploadDocument">Upload Document</a></li>
+                    <li className="moblink"><a href = "#askUs">Ask Us</a></li>
+                    <li className='moblink'><a href = "#profile">Profile</a></li>
+                    <li className="moblink"><a href = "#" onClick={(e) => {userLogOut(e)}}>Log Out</a></li>
+                </ul>
+            </nav>
         </header>
     )
 }
