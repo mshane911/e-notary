@@ -1,0 +1,166 @@
+.line{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
+.profile{
+    text-align: center;
+}
+
+.profileIcon2{
+    color: black;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    margin-top: 50px;
+}
+
+.profileName1{
+    border: none;
+    color: black;
+    font-size: 20pt;
+    font-style: normal;
+    text-align: center;
+    margin: 30px 0 10px 0;
+}
+
+.profile p{
+    color: black;
+    font-size: 14pt;
+    font-style: normal;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.tableBorder{
+    border: 0;
+    color: black;
+    width: 100%;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 5%;
+}
+
+.tdName{
+    width: 0%;
+}
+
+.space1{
+    width: 10%;
+}
+
+.tdPhone{
+    width: 40%;
+}
+
+.space2{
+    height: 1px;
+}
+
+.data1{
+    width: 15%;
+}
+
+.data2{
+    width: 15%;
+}
+.data3{
+    width: 15%;
+}
+.data4{
+    width: 15%;
+}
+.data5{
+    width: 15%;
+}
+
+.textfield1{
+    border: none;
+    padding: 1px 3px;
+    margin-left: 2px;
+    width: 96%;
+}
+
+.textfield2{
+    border: none;
+    padding: 1px 3px;
+    margin-left: 2px;
+    width: 96%;
+}
+
+.textfield3{
+    border: none;
+    padding: 1px 3px;
+    margin-left: 2px;
+    width: 96%;
+}
+
+.textfield4{
+    border: none;
+    padding: 1px 3px;
+    margin-left: 2px;
+    width: 96%;
+}
+
+.textfield5{
+    border: none;
+    padding: 1px 3px;
+    margin-left: 2px;
+    width: 96%;
+}
+
+.dropdownBox {
+    width: 45%;
+    margin-left: 2px;
+    padding-left: 3px;
+    margin: 8px 0px;
+}
+
+.saveNcancelTD{
+    width: 100%;
+}
+
+
+.saveButton{
+    border: none;
+    border-radius: 16px;
+    display: inline-block;
+    background-color:#B20D30;
+    color: white;
+    padding: 13px 0px;
+    font-size: 15pt;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 48px;
+    width: 130px;
+    margin-left: 120px;
+}
+
+.cancelButton{
+    border: none;
+    border-radius: 16px;
+    display: inline-block;
+    background-color:#A9B4C2;
+    color: white;
+    padding: 13px 0px;
+    font-size: 15pt;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 48px;
+    width: 130px;
+    margin-left: 43px;
+}
+
+.space3{
+    width: 10%;
+}
+
+.saveButton :hover{
+    color: #A9B4C2;
+}
+
+.cancelButton :hover{
+    color: #A9B4C2;
+}
