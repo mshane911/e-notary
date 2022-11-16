@@ -1,7 +1,7 @@
-.signtable,td{
+.signtable{
     width:70vw;
     height:3vw;
-    border:1px solid;
+    border:none;
     color:#1E2A52;
 }
 .blankgap{
@@ -24,6 +24,11 @@
     height: 2.2vw;
 }
 
+.homebuttons{
+    border: none;
+    background-color: white;
+}
+
 .generatesignaturebutton{
     display: inline-block;
     border-radius: 5px;
@@ -32,4 +37,17 @@
     color: white;
     width: 90vw;
     height: 3vw;
+}
+
+hr{
+    border-color: #A9B4C2;
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+input{
+    width:100%;
+    border:none;
 }

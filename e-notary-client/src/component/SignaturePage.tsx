@@ -21,23 +21,41 @@ export default function SignaturePage(){
                 </tr>
             </table>
             <br/>
-            <form method='get'>
+            <form action='' method='get'>
             <span className='filenametext'>You have uploaded <b>filename.pdf</b></span>
             <button type='reset' className='cancelbutton'>Cancel</button>
             <br/><br/><br/><br/>
             <table className="signtable">
                 <tr>
-                    <td></td>
+                    <td>
+                        First name<br/>
+                        <input type = "text" id = "firstname" className="firstname"/><hr/>
+                    </td>
                     <td className="blankgap"></td>
-                    <td></td>
+                    <td>
+                        Last name<br/>
+                        <input type = "text" id = "lastname"/><hr/>
+                    </td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td>
+                        <br/>
+                        Date<br/>
+                        <input type = "text" id = "date"/><hr/>
+                    </td>
                     <td className="blankgap"></td>
-                    <td></td>
+                    <td>
+                        <br/>
+                        Time<br/>
+                        <input type = "text" id = "time"/><hr/>
+                    </td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td>
+                        <br/>
+                        Location<br/>
+                        <input type = "text" id = "location"/><hr/>
+                    </td>
                     <td className="blankgap"></td>
                     <td></td>
                 </tr>
