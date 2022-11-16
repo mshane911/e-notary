@@ -1,68 +1,182 @@
-.text{
-    font-family: 'Source Sans Pro', sans-serif;
-    margin-top: 48px;
-    margin-left: 48px;
+.dashboard{
+    width: 100vw;
+    overflow: hidden;
 }
-.johndoe{
-    color:#1E2A52;
+
+.dashboard, .verifyDocBtn, .addSignBtn{
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #1E2A52;
+}
+
+.cursiveText{
+    font-family: 'Homemade Apple', cursive;
+    font-weight: bold;
+}
+
+.welcomeText, .fileInputWrapper, .verificationInfo{
+    margin: 48px 48px 0 48px;
+}
+
+.nameText{
     font-size: 40px;
 }
-.help{
-    color:#1E2A52;
+
+.helpText{
     font-size: 20px;
 }
+
 .needsignature{
     color:#A9B4C2;
     font-size: 20px;
 }
 
-.table1{
-    width: 90vw;
-    height: 3vw;
-    border: 1px solid;
-    color:#1E2A52;
-    border-radius: 5px;
-}
-.td1{
-    width: 70vw;
-    border-radius: 5px;
-}
-.td2, .td3{
-    width:5%;
-    text-align: center;
+.fileInputWrapper{
+    border: #1E2A52 solid;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 16px;
+    border-radius: 16px;
 }
 
-.ptd1{
-    color:#1E2A52;
-    font-size: 16px;
-    padding-left: 20px;
-}
-
-.ptd2, .ptd3{
-    color:#1E2A52;
-    font-size: 22px;
-    /* padding-right: 24px; */
-}
-
-.table2{
-    width: 90vw;
-}
-.td4, .td5{
-    height: 3vw;
-    border: 1px solid;
-    color:#1E2A52;
-    border-radius: 5px;
-}
-.blanktd{
-    width: 1vw;
-    height: 3vw;
-}
-.clickable button{
+.inputBtnLabel{
     display: inline-block;
-    text-align: center;
+}
+
+#cancelInput{
+    color: #B20D30;
+    margin: 0 48px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    visibility: hidden;
+    padding: 0 16px;
+    cursor: pointer;
+}
+
+#cancelInput p{
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.removeFileLabel{
+    display: inline-block;
+}
+
+.inputBtn{
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.inputBtn:hover{
+    color:#A9B4C2;
+    transform: scale(1.2);
+}
+
+.labelInputWrapper{
+    cursor: pointer;
+    background-color: #1E2A52;
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 8px 24px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.leftWrapper{
+    float: l
+}
+
+.rightWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.fileName, .fileInput{
+    display: inline-block;
+}
+
+.fileName{
+    font-size: 20px;
+    float: left;
+}
+
+.submitWrapper{
+    margin: 0 48px;
+}
+
+.verifyDocBtn input, .addSignBtn input{
+    border: 4px solid rgba(0,0,0,0);
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #1E2A52;
     width: 100%;
-    height: 100%;
-    color:#1E2A52;
-    background-color: transparent;
-    border:none;
+    padding: 24px;
+    display: inline-block;
+}
+
+.verifyDocBtn, .addSignBtn{
+    display: inline-block;
+    width: calc(50% - 72px);
+    box-sizing: border-box;
+    margin: 0 12px;
+}
+
+#verifyBtn:disabled, #verifyBtn[disabled]{
+    background-color: #A9B4C2;
+    color: #fff;
+}
+
+#signatureBtn, #verifyBtn{
+    background-color: #1E2A52;
+    color: #fff;
+}
+
+#signatureBtn:hover, #verifyBtn:active:hover:not([disabled]){
+    background-color: #fff;
+    color: #1E2A52;
+    border: #1E2A52 solid 4px;
+}
+
+.mobileShow{
+    display: none;
+}
+
+.mobileHidden{
+    display: inline-block;
+}
+
+/* UNCOMMENT WHEN USIGN IS CONNECTED TO THE PAGE */
+/* .verifyStatusGood, .verifyStatusBad{
+    color: #fff;
+    padding: 12px 48px;
+    border-radius: 16px;
+}
+
+.verifyStatusBad{
+    background-color: #B20D30;
+}
+
+.verifyStatusGood{
+    background-color: #0FA958;
+} */
+
+.verifyStatusGood, .verifyStatusBad{
+    display: none;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-device-width: 667px){
+    .welcomeText, .fileInputWrapper, .verificationInfo{margin: 24px 24px 0 24px}
+    .belowName{margin: 24px 0;}
+    .verifyDocBtn, .addSignBtn{width:calc(100% - 48px);margin:8px 0;}
+    .submitWrapper{margin:0 24px;}
+    .mobileHidden{display: none;}
+    .mobileShow{display: inline-block;}
+    .inputBtn{margin:0;}
+    .fileInputWrapper{display: flex;align-items: center;justify-content: space-between;padding:0 16px;}
+    #cancelInput{margin:0 24px;font-size: 12px;}
 }

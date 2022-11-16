@@ -45,10 +45,6 @@ li, button{
     margin: 0 24px;
 }
 
-.profileIcon :hover{
-    color: #A9B4C2;
-}
-
 .navLinks{
     width: 60%;
     margin: 0 auto;
@@ -75,8 +71,7 @@ li, button{
     border: none;
     background-color:#4776E6;
     color: white;
-    width: 100%;
-    padding: 10px 0;
+    padding: 10px 24px;
 }
 
 .buttonLinks{
@@ -84,14 +79,31 @@ li, button{
     display: flex;
     align-items: center;
     margin-right: 48px;
+    justify-content: flex-end;
 }
 
-.buttonLinks button:hover{
-    color: #A9B4C2;
+.profileIcon:hover{
+    color:#fff;
+}
+
+.logOutBtn:hover{
+    background-color: #fff;
+    color:#1E2A52;
 }
 
 .bgLogoMobile, .navToggle{
     display: none;
+}
+
+.mobileLink{
+    display: none;
+}
+
+.moblink a, .moblink button{
+    text-decoration: none;
+    color: #fff;
+    background-color: #1E2A52;
+    border: none;
 }
 
 /* MEDIA QUERIES */
@@ -99,15 +111,19 @@ li, button{
     .logoContainer{width:10%;}
     .bgLogo{width: 100%;}
     .link a, .logOutBtn{font-size:16px;margin:0 8px;}
+    .profileIcon{width:30px;}
+    .logOutBtn{padding:10px 14px;}
 }
 
 @media only screen and (max-device-width: 667px){
     header{padding: 8px 0%;}
-    .link a, .logOutBtn, .profileIcon{display: none;}
-    .logoContainer{width:80%;display:flex;align-items:center;}
+    .logOutBtn, .profileIcon, .navLinks ul{display: none;}
+    .logoContainer{width:80%;display:flex;align-items:center;margin-left:24px;}
     .logoText{font-size:4vw;display: inline-block;}
     .bgLogoMobile{height:24px;display: inline-block;margin-right:8px;height:6vw;}
     .bgLogo{display: none;}
     .navToggle{display: inline-block; width:10%; float:right;margin-right:24px;}
     .hamburgerIcon{height:100%;}
+    .mobileLink{position: absolute; top:45px;background-color: #1E2A52;width: 100vw;}
+    .moblink{display: block; margin: 24px 0;}
 }
