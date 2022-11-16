@@ -20,6 +20,21 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password Required!"],
         unique: false
+    },
+    gender: {
+        type: String,
+        required: false,
+        unique: false
+    },
+    country: {
+        type: String,
+        required: false,
+        unique: false
+    },
+    phoneNumber: {
+        type: String,
+        required: false,
+        unique: [true, "Phone number already registered!"]
     }
 });
 

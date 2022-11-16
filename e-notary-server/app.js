@@ -48,6 +48,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 const registRouter = require('./routes/user/registration');
 const loginRouter = require('./routes/user/login');
 const logoutRouter = require('./routes/user/logout');
+const updateRouter = require('./routes/user/updateUser');
+const getUserRouter = require('./routes/user/getUser');
 
 const createUsignTokenRouter = require('./routes/usign/createToken');
 const authUsignTokenRouter = require('./routes/usign/authToken');
@@ -68,6 +70,8 @@ app.use('/api/', indexRouter);
 app.use('/api/register/', registRouter);
 app.use('/api/login/', loginRouter);
 app.use('/api/logout/', logoutRouter);
+app.use('/api/update/', updateRouter);
+app.use('/api/getUser/', getUserRouter);
 app.use('/api/users', usersRouter);
 
 app.use('/api/usign/createUsignToken', createUsignTokenRouter);
