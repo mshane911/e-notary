@@ -3,8 +3,7 @@ import '../styles/home.css'
 import Header from './Header'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
-import { faCamera } from '@fortawesome/free-solid-svg-icons'
+import { faUpload, faTrash, faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
 export default function Home(){
     useEffect(() => {
@@ -12,40 +11,91 @@ export default function Home(){
     })
     
     // TODO: Get user name
+    const displayFileName = () => {
+        var value = (document.getElementById("fileInput") as HTMLInputElement).value
+        const removeFile = document.getElementById("cancelInput")
+        const verifyFile = document.getElementById("verifyBtn") as HTMLButtonElement | null;
+
+        console.log(value !== "")
+
+        value = value.replace(/.*[\/\\]/, '')
+        document.getElementById("fileNameField").innerHTML = value
+
+        value !== "" ? removeFile.style.visibility = "visible" : removeFile.style.visibility = "hidden"
+        value !== "" ? verifyFile.disabled = false : verifyFile.disabled = true
+    }
+
+    const removeUploadedFile = () => {
+        var input = (document.getElementById("fileInput") as HTMLInputElement).value
+        const removeFile = document.getElementById("cancelInput")
+        const verifyFile = document.getElementById("verifyBtn") as HTMLButtonElement | null;
+
+        input = ""
+        document.getElementById("fileNameField").innerHTML = "No file chosen"
+
+        console.log((document.getElementById("fileNameField") as HTMLInputElement).value)
+
+        input !== "" ? removeFile.style.visibility = "visible" : removeFile.style.visibility = "hidden"
+        input !== "" ? verifyFile.disabled = false : verifyFile.disabled = true
+    }
+
+    //TODO: add more input checks for pdf
+    //TODO: Display verify label based on usign
+    //TODO: pass file to signature page
     return(
         <div>
             <Header />
 
-            <div className='text'>
-                <span className ="johndoe">Meet your <b>E-Notary</b>, John Doe</span>
-                <br/>
-                <span className="help">What can I help you with today?</span>&emsp;
-                <span className="needsignature">I need a signature</span>
-                <br/><br/><br/><br/>
+            <div className='dashboard'>
+                <div className='welcomeText'>
+                    <span className ="nameText">Meet your 
+                        <br className='mobileShow' /><b className='cursiveText'> E-Notary</b>, 
+                        <br className='mobileShow' /> John Doe
+                    </span>
+                    <br/>
+                    <div className='belowName'>
+                        <span className="helpText">What can I help you with today?</span>&emsp;
+                        <span className="needsignature"><br className='mobileShow'/>I need a signature</span>
+                    </div>
+                </div>
+                
+                <form>
+                    <div className='fileInputWrapper'>
+                        <div className='leftWrapper'>
+                            <p className='fileName' id="fileNameField">No file chosen</p>
+                        </div>
 
-                <table className="table1">
-                    <tr>
-                        <td className="td1"><p className="ptd1">Upload your document here</p></td>
-                        <td className="td2">
-                            <a className="clickable" href="#link"><FontAwesomeIcon icon={faLink} className="ptd2"/></a>
-                        </td>
-                        <td className="td3">
-                            <a className="clickable" href="#camera"><FontAwesomeIcon icon={faCamera} className="ptd3"/></a>
-                        </td>
-                    </tr>
-                </table>
-                <br/>
-                <table className="table2">
-                    <tr>
-                        <td className="td4">
-                            <a className="clickable" href="#verifythisdocument"><button><b>Verify This Document</b></button></a>
-                        </td>
-                        <td className="blanktd"></td>
-                        <td className="td5">
-                            <a className="clickable" href="#addyoursignature"><button><b>Add Your Signature</b></button></a>
-                        </td>
-                    </tr>
-                </table>
+                        <div className='rightWrapper'>
+                            <label htmlFor="fileInput" className='labelInputWrapper'>
+                                <p className="mobileHidden inputBtnLabel">Upload File</p>
+                                <FontAwesomeIcon icon={faUpload} className="inputBtn" />
+                            </label>
+                            <input type="file" id="fileInput" accept="application/pdf" onChange={displayFileName} />
+                        </div>
+                    </div>
+                    <div  id="cancelInput" onClick={removeUploadedFile}>
+                        <p className='removeFileLabel'>Remove File</p>
+                        <FontAwesomeIcon icon={faTrash}/>
+                    </div>
+
+                    <div className='submitWrapper'>
+                        <div className='verifyDocBtn'>
+                            <input type="submit" value="Verify This Document" disabled id='verifyBtn'/>
+                        </div>
+                        <div className='addSignBtn'>
+                            <input type="submit" value="Add Your Signature" id="signatureBtn"/>
+                        </div>
+                    </div>
+                </form>
+
+                <div className='verificationInfo'>
+                    <div className='verifyStatusGood'>
+                        <h3>Document Verified <FontAwesomeIcon icon={faCircleCheck} /></h3>
+                    </div>
+                    <div className='verifyStatusBad'>
+                        <h3>Document Not Verified <FontAwesomeIcon icon={faCircleXmark} /></h3>
+                    </div>
+                </div>
             </div>
         </div>
     )
