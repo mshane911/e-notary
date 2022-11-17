@@ -1,0 +1,37 @@
+.fileinfo{
+    margin: 0px 48px 0 48px;
+}
+
+.signtable{
+    width:70vw;
+    height:3vw;
+    border:none;
+    color:#1E2A52;
+}
+.blankgap{
+    width:5vw;
+    height:3vw;
+}
+
+.generatesignaturebutton{
+    display: inline-block;
+    border-radius: 5px;
+    border: none;
+    background-color:#1E2A52;
+    color: white;
+    width: 90vw;
+    height: 3vw;
+}
+
+.spacing{
+    border-color: #A9B4C2;
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+input{
+    width:100%;
+    border:none;
+}
