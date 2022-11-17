@@ -1,3 +1,7 @@
+.fileinfo{
+    margin: 0px 48px 0 48px;
+}
+
 .signtable{
     width:70vw;
     height:3vw;
@@ -7,26 +11,6 @@
 .blankgap{
     width:5vw;
     height:3vw;
-}
-
-.filenametext{
-    color:#1E2A52;
-    padding-left: 10px;
-}
-.cancelbutton{
-    margin-left: 715px;
-    display: inline-block;
-    border-radius: 5px;
-    border: none;
-    background-color:#B20D30;
-    color: white;
-    width: 15vw;
-    height: 2.2vw;
-}
-
-.homebuttons{
-    border: none;
-    background-color: white;
 }
 
 .generatesignaturebutton{
@@ -39,7 +23,7 @@
     height: 3vw;
 }
 
-hr{
+.spacing{
     border-color: #A9B4C2;
     border-top-width: 1px;
     border-right-width: 0px;
