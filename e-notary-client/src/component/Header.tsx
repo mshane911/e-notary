@@ -58,14 +58,14 @@ export default function Header(){
             </div>
             <nav className='navLinks'>
                 <ul>
-                    <li className="link"><a href = "#verifyDocument">Verify Document</a></li>
+                    <li className="link"><a href = "/home">Verify Document</a></li>
                     <li className="link"><a href = "#uploadDocument">Upload Document</a></li>
                     <li className="link"><a href = "#askUs">Ask Us</a></li>
                 </ul>
             </nav>
             <div className='buttonLinks'>
                 <button className="logOutBtn" onClick={userLogOut}>Log Out</button>
-                <FontAwesomeIcon icon={faCircleUser} className='profileIcon'/>
+                <a href="/profile"><FontAwesomeIcon icon={faCircleUser} className='profileIcon'/></a>
             </div>
 
             <div className='navToggle' onClick={openNavBar}>
