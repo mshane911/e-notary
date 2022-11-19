@@ -54,6 +54,7 @@ const getUserRouter = require('./routes/user/getUser');
 const createUsignTokenRouter = require('./routes/usign/createToken');
 const authUsignTokenRouter = require('./routes/usign/authToken');
 const signDocumentRouter = require('./routes/usign/signDocument');
+const uploadFileRouter = require('./routes/usign/uploadFile');
 
 const createBotRouter = require('./routes/langcode/createBot');
 const deleteBotRouter = require('./routes/langcode/deleteBot');
@@ -77,6 +78,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/usign/createUsignToken', createUsignTokenRouter);
 app.use('/api/usign/authUsignToken', authUsignTokenRouter);
 app.use('/api/usign/signDocument', signDocumentRouter);
+app.use('/api/usign/uploadFile', uploadFileRouter)
 
 app.use('/api/langcode/createBot', createBotRouter);
 app.use('/api/langcode/deleteBot', deleteBotRouter);
