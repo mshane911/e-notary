@@ -1,19 +1,41 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/home.css'
 import Header from './Header'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload, faTrash, faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+
 import { useNavigate } from 'react-router-dom'
 
 export default function Home(){
     const navigate = useNavigate()
     const [userFile, setUserFile] = useState(null)
 
+interface User {
+    _id: string | number;
+    email: string;
+    name: string;
+    userType: string;
+    password: string;
+    country?: string;
+    gender?: string;
+    phoneNumber?: string | number;
+}
+
+export default function Home(){
+    const [user, setUser] = useState(null);
+    // const [isBusy, setBusy] = useState(true);
+
     useEffect(() => {
         document.title = "Welcome to your dashboard"
-    })
+        axios.get('/api/getUser')
+        .then((response) => {
+            const user: User = response.data;
+            setUser(user);
+            console.log(user);
+        })
+    }, []);
     
     // TODO: Get user name
     const displayFileName = (files: FileList) => {
@@ -82,11 +104,19 @@ export default function Home(){
         <div>
             <Header />
 
+    function Dashboard() {
+        if (!user) {
+            return <h1>Loading...</h1>
+        } else {
+            return (
+            <div>
+            <Header />            
+
             <div className='dashboard'>
                 <div className='welcomeText'>
                     <span className ="nameText">Meet your 
                         <br className='mobileShow' /><b className='cursiveText'> E-Notary</b>, 
-                        <br className='mobileShow' /> John Doe
+                        <br className='mobileShow' /> <span className='smallText'> {user.name} </span>
                     </span>
                     <br/>
                     <div className='belowName'>
@@ -133,6 +163,17 @@ export default function Home(){
                     </div>
                 </div>
             </div>
+        </div>
+        )
+        }
+    }
+
+    //TODO: add more input checks for pdf
+    //TODO: Display verify label based on usign
+    //TODO: pass file to signature page
+    return(
+        <div>
+            <Dashboard />
         </div>
     )
 }
