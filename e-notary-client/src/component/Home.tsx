@@ -6,6 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload, faTrash, faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 
+import { useNavigate } from 'react-router-dom'
+
+export default function Home(){
+    const navigate = useNavigate()
+    const [userFile, setUserFile] = useState(null)
+
 interface User {
     _id: string | number;
     email: string;
@@ -21,8 +27,6 @@ export default function Home(){
     const [user, setUser] = useState(null);
     // const [isBusy, setBusy] = useState(true);
 
-    
-
     useEffect(() => {
         document.title = "Welcome to your dashboard"
         axios.get('/api/getUser')
@@ -34,12 +38,13 @@ export default function Home(){
     }, []);
     
     // TODO: Get user name
-    const displayFileName = () => {
+    const displayFileName = (files: FileList) => {
+        setUserFile(files)
         var value = (document.getElementById("fileInput") as HTMLInputElement).value
         const removeFile = document.getElementById("cancelInput")
         const verifyFile = document.getElementById("verifyBtn") as HTMLButtonElement | null;
 
-        console.log(value !== "")
+        console.log("file not empty:", value !== "")
 
         value = value.replace(/.*[\/\\]/, '')
         document.getElementById("fileNameField").innerHTML = value
@@ -62,6 +67,42 @@ export default function Home(){
         input !== "" ? verifyFile.disabled = false : verifyFile.disabled = true
     }
 
+    function uploadToSignature(files: FileList){
+        // get file
+        const uploadedUserFile = files[0]
+        setUserFile(uploadedUserFile) // bisa diapus
+
+        const formData = new FormData();
+        formData.append('file', uploadedUserFile)
+
+        const config = {
+            method: "POST",
+            url: "/api/usign/uploadFile/",
+            data: formData,
+        }
+        console.log(files)
+        
+        axios(config).then(
+            (res) => {
+                console.log(res)
+                console.log(res.data)
+                console.log(res.data.url)
+
+                // window.location.href = '/signaturepage'
+            }).catch((err) => {
+                console.log(err)
+            }
+        )
+        
+        navigate('/signaturepage', {replace: true})
+    }
+
+    //TODO: add more input checks for pdf
+    //TODO: Display verify label based on usign
+    //TODO: pass file to signature page
+    return(
+        <div>
+            <Header />
 
     function Dashboard() {
         if (!user) {
@@ -84,7 +125,7 @@ export default function Home(){
                     </div>
                 </div>
                 
-                <form>
+                <form encType="multipart/form-data" action='/api/usign/uploadFile' method='post' >
                     <div className='fileInputWrapper'>
                         <div className='leftWrapper'>
                             <p className='fileName' id="fileNameField">No file chosen</p>
@@ -95,7 +136,7 @@ export default function Home(){
                                 <p className="mobileHidden inputBtnLabel">Upload File</p>
                                 <FontAwesomeIcon icon={faUpload} className="inputBtn" />
                             </label>
-                            <input type="file" id="fileInput" accept="application/pdf" onChange={displayFileName} />
+                            <input type="file" id="fileInput" accept="application/pdf" onChange={(e) => {displayFileName(e.target.files)}}/>
                         </div>
                     </div>
                     <div  id="cancelInput" onClick={removeUploadedFile}>
@@ -108,7 +149,7 @@ export default function Home(){
                             <input type="submit" value="Verify This Document" disabled id='verifyBtn'/>
                         </div>
                         <div className='addSignBtn'>
-                            <input type="submit" value="Add Your Signature" id="signatureBtn"/>
+                            <input type="submit" id='signatureBtn' value="Add Your Signature" onClick={() => uploadToSignature(userFile)}></input>
                         </div>
                     </div>
                 </form>
