@@ -11,7 +11,7 @@ export default function Namecard1(){
                         <table className='listOfName'>
                             <tr>
                                 <td className='name1'>
-                                   <button name = "name1" className='name1btn active'>John Doe<p className='userType'>Employee User</p></button>
+                                   <button name = "name1" className='name1btn active'>John Doe<h5 className='userType'>Employee User</h5></button>
                                 </td>
                             </tr>
                         </table>
@@ -38,7 +38,12 @@ export default function Namecard1(){
                         </table>
                     </div>
                     <div className='chatboxContainer'>
-                        <textarea placeholder = "Type a message" rows={1} className='chatbox'></textarea>
+                        <div className='chatboxClass'>
+                            <textarea placeholder = "Type a message" rows={1} className='chatbox'></textarea>
+                        </div>
+                        <div className='sendClass'>
+                            <button name="send" className='sendbtn'>Send</button>
+                        </div>
                     </div>
                 </div>
             </div>
