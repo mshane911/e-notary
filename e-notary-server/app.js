@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const fileUpload = require('express-fileupload');
+// const serveStatic = require('serve-static');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/user/users');
@@ -43,6 +45,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
+
+// serve static files from dir pdf
+app.use('/files', express.static('pdf'));
 
 // ROUTES
 const registRouter = require('./routes/user/registration');
@@ -54,6 +60,9 @@ const getUserRouter = require('./routes/user/getUser');
 const createUsignTokenRouter = require('./routes/usign/createToken');
 const authUsignTokenRouter = require('./routes/usign/authToken');
 const signDocumentRouter = require('./routes/usign/signDocument');
+// const uploadFileRouter = require('./routes/usign/uploadFile');
+const storePdfRouter = require('./routes/usign/storePdf');
+const listUserPdfNames = require('./routes/usign/listUserPdfNames');
 const uploadFileRouter = require('./routes/usign/uploadFile');
 
 const createBotRouter = require('./routes/langcode/createBot');
@@ -78,6 +87,9 @@ app.use('/api/users', usersRouter);
 app.use('/api/usign/createUsignToken', createUsignTokenRouter);
 app.use('/api/usign/authUsignToken', authUsignTokenRouter);
 app.use('/api/usign/signDocument', signDocumentRouter);
+// app.use('/api/usign/uploadFile', uploadFileRouter)
+app.use('/api/usign/storePdf', storePdfRouter);
+app.use('/api/usign/listUserPdfNames', listUserPdfNames);
 app.use('/api/usign/uploadFile', uploadFileRouter)
 
 app.use('/api/langcode/createBot', createBotRouter);
