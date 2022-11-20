@@ -1,0 +1,236 @@
+.namecardContainer{
+    width: 100%;
+    align-items: center;
+    max-height: 100vh;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.CONTAINER{
+    width: 100%;
+    display: flex;
+}
+
+.CONTAINER .leftContainer{
+    width: 30%;
+    max-height: 100vh;
+}
+
+.CONTAINER .rightContainer{
+    width: 70%;
+    max-height: 100vh;
+    background-color:#A9B4C2;
+}
+/* container for the name in right side (top) */
+.nameContainer{
+    height: 105px;
+    width: 100%;
+    background-color:#A9B4C2;
+}
+
+.pplName{
+    font-size: 20pt;
+    color: black;
+    font-style: bold;
+    margin: 0 40px;
+    padding-top: 38px;
+    padding-bottom: 25px;
+    text-align: center;
+}
+
+.hr2{
+    background: white;
+    border: 0.5pt solid white;
+}
+
+.messagesContainer{
+    width: 100%;
+    height: calc(100% - 165px);
+    background-image: radial-gradient(white, #A9B4C2);
+    padding: 30px;
+    overflow: hidden;
+    overflow-y: visible;
+}
+
+.gridItems1{
+    width: 100%;
+}
+
+.clientChat1{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 12px 12px 12px 0;
+    background-color: rgba(255, 218, 26, 100%);
+    height: 30px;
+    font-size: 12pt;
+    color: black;
+}
+
+.clientChat2{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    margin-top: 20px;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 12px 12px 12px 0;
+    background-color: rgba(255, 218, 26, 100%);
+    height: 30px;
+    font-size: 12pt;
+    color: black;
+}
+
+.clientChat3{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    margin-top: 20px;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 12px 12px 12px 0;
+    background-color: rgba(255, 218, 26, 100%);
+    height: 30px;
+    font-size: 12pt;
+    color: black;
+}
+
+.clientChat4{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    margin-top: 20px;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 12px 12px 12px 0;
+    background-color: rgba(255, 218, 26, 100%);
+    height: 30px;
+    font-size: 12pt;
+    color: black;
+}
+.clientChat5{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    margin-top: 20px;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 12px 12px 12px 0;
+    background-color: rgba(255, 218, 26, 100%);
+    height: 30px;
+    font-size: 12pt;
+    color: black;
+}
+
+
+.gridItems2{
+    width: 100%;
+}
+
+.notarisChat1{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    margin-top: 20px;
+    margin-left: 55%;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 12px 12px 0 12px;
+    background-color: #8798b6;
+    height: 30px;
+    font-size: 12pt;
+    text-align: right;
+    color: black;
+}
+
+.notarisChat2{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    margin-top: 20px;
+    margin-left: 55%;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 12px 12px 0 12px;
+    background-color: #8798b6;
+    height: 30px;
+    font-size: 12pt;
+    text-align: right;
+    color: black;
+}
+
+.notarisChat3{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    margin-top: 20px;
+    margin-left: 55%;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 12px 12px 0 12px;
+    background-color: #8798b6;
+    height: 30px;
+    font-size: 12pt;
+    text-align: right;
+    color: black;
+}
+
+.notarisChat4{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    margin-top: 20px;
+    margin-left: 55%;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 12px 12px 0 12px;
+    background-color: #8798b6;
+    height: 30px;
+    font-size: 12pt;
+    text-align: right;
+    color: black;
+}
+
+
+.chatboxContainer{
+    width: 100%;
+    display: flex;
+}
+
+.chatboxClass{
+    width: 90%;
+}
+
+.chatbox{
+    resize: none;
+    box-sizing: border-box;
+    width: 97%;
+    height: 8vh;
+    padding: 13px;
+    margin-left: 18px;
+    font-size: 12pt;
+    background-color: #f9fafb;
+    border: 1px solid #e4e7ec;
+    overflow: hidden;
+}
+
+.sendClass{
+    width: 10%;
+}
+
+.sendbtn{
+    width: 100%;
+    resize: none;
+    height: 8vh;
+    padding: 5px;
+    font-size: 15pt;
+    color: #1E2A52;
+    border: none;
+    background-color: transparent;
+    padding-right: 10px;
+}
+
+.sendbtn:hover{
+    color: white;
+}
