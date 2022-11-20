@@ -12,18 +12,16 @@ export default function Home(){
     const navigate = useNavigate()
     const [userFile, setUserFile] = useState(null)
 
-interface User {
-    _id: string | number;
-    email: string;
-    name: string;
-    userType: string;
-    password: string;
-    country?: string;
-    gender?: string;
-    phoneNumber?: string | number;
-}
-
-export default function Home(){
+    interface User {
+        _id: string | number;
+        email: string;
+        name: string;
+        userType: string;
+        password: string;
+        country?: string;
+        gender?: string;
+        phoneNumber?: string | number;
+    }
     const [user, setUser] = useState(null);
     // const [isBusy, setBusy] = useState(true);
 
@@ -100,9 +98,6 @@ export default function Home(){
     //TODO: add more input checks for pdf
     //TODO: Display verify label based on usign
     //TODO: pass file to signature page
-    return(
-        <div>
-            <Header />
 
     function Dashboard() {
         if (!user) {
@@ -171,6 +166,7 @@ export default function Home(){
     //TODO: add more input checks for pdf
     //TODO: Display verify label based on usign
     //TODO: pass file to signature page
+
     return(
         <div>
             <Dashboard />
