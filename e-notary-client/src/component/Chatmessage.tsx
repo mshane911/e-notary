@@ -40,7 +40,7 @@ export default function Chatmessage(){
                             <div className='clientChat5'>.....</div>
                         </div>
                     </div>
-                    
+
                     <div className='chatboxContainer'>
                         <div className='chatboxClass'>
                             <textarea placeholder = "Type a message" rows={1} className='chatbox'></textarea>
