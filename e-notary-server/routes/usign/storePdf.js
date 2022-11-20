@@ -3,16 +3,18 @@ const upload = require('express-fileupload');
 const auth = require("../../auth");
 const router = express.Router();
 const fs = require('fs');
+const sanitize = require("sanitize-filename");
 
 router.post("/", auth, (req, res, next) => {
     const userId = req.user.userId;
     if (req.files) {
         var file = req.files.document;
+        var fileName = sanitize(file.name);
         var dir = `./pdf/${userId}`;
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
         }
-        var uploadPath = `./pdf/${userId}/${file.name}`;
+        var uploadPath = `./pdf/${userId}/${fileName}`;
         
 
         file.mv(uploadPath, function (err) {

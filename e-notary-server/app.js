@@ -63,7 +63,6 @@ const signDocumentRouter = require('./routes/usign/signDocument');
 // const uploadFileRouter = require('./routes/usign/uploadFile');
 const storePdfRouter = require('./routes/usign/storePdf');
 const listUserPdfNames = require('./routes/usign/listUserPdfNames');
-const uploadFileRouter = require('./routes/usign/uploadFile');
 
 const createBotRouter = require('./routes/langcode/createBot');
 const deleteBotRouter = require('./routes/langcode/deleteBot');
@@ -90,7 +89,6 @@ app.use('/api/usign/signDocument', signDocumentRouter);
 // app.use('/api/usign/uploadFile', uploadFileRouter)
 app.use('/api/usign/storePdf', storePdfRouter);
 app.use('/api/usign/listUserPdfNames', listUserPdfNames);
-app.use('/api/usign/uploadFile', uploadFileRouter)
 
 app.use('/api/langcode/createBot', createBotRouter);
 app.use('/api/langcode/deleteBot', deleteBotRouter);
