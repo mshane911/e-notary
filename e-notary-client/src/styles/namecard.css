@@ -1,0 +1,190 @@
+.namecardContainer{
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.CONTAINER{
+    width: 100%;
+    display: flex;
+}
+
+.CONTAINER .leftContainer{
+    width: 30%;
+    min-height: 100vh;
+    background-color:#1E2A52;
+    border-right: 2px solid black;
+}
+
+.CONTAINER .rightContainer{
+    width: 70%;
+    min-height: 100vh;
+    background-color:#A9B4C2;
+}
+
+.containerTop{
+    width: 100%;
+    height: 110px;
+    padding-bottom: 25px;
+}
+
+.containerForChats{
+    width: 100%;
+    height: 90px;
+    height: 81vh;
+}
+
+/* table for the list of name */
+.listOfName{
+    width:100%;
+    padding-top: 10px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-spacing: 0 15px;
+}
+
+.name1{
+    padding-left: 18px;
+    padding-right: 18px;
+    width: 80%;
+    height: 50px;    
+    padding: 0;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.name1btn{
+    width: 100%;
+    color: black;
+    height: 50px;
+    background-color: white;
+    padding-left: 18px;
+    padding-right: 18px;
+    margin: 0;
+    outline: none;
+    border: none;
+    font-size: 14pt;
+    text-align: left;
+    font-weight: 550;
+    border-radius: 10px;
+}
+
+.active, .name1btn:hover{
+    background-color: #A9B4C2;
+    cursor: pointer;
+}
+
+.userType{
+    margin: 0;
+    font-weight:lighter;
+    font-size: 10pt;
+}
+
+/* container for the name in right side (top) */
+.nameContainer{
+    height: 17vh;
+    width: 100%;
+}
+
+.pplName{
+    font-size: 20pt;
+    color: black;
+    font-style: bold;
+    margin: 0 40px;
+    padding-top: 38px;
+    padding-bottom: 25px;
+    text-align: center;
+}
+
+.hr2{
+    background: white;
+    border: 0.5pt solid white;
+}
+
+.messagesContainer{
+    width: 100%;
+    min-height: 73vh;
+    background-image: radial-gradient(white, #A9B4C2);
+}
+
+.messages{
+    color: black;
+    font-size: 12pt;
+    width: 100%;
+    padding: 0 20px;
+    padding-top: 10px;
+}
+
+.tdMsg1{
+    padding: 0px 10px;
+    margin-right: 0;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(255, 218, 26, 100%);
+}
+
+.msg1{
+    margin: 5px;
+    text-align: left;
+}
+
+.tdMsg2{
+    padding: 0px 10px;
+    margin-left: 0;
+    width: 45%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.messages .tdSpace{
+    width: 10%;
+}
+
+.msg2{
+    margin: 5px;
+    text-align: right;
+}
+
+.chatboxContainer{
+    width: 100%;
+    display: flex;
+}
+
+.chatboxClass{
+    width: 90%;
+}
+
+.chatbox{
+    resize: none;
+    box-sizing: border-box;
+    width: 97%;
+    height: 8vh;
+    padding: 13px;
+    margin-left: 18px;
+    font-size: 12pt;
+    background-color: #f9fafb;
+    border: 1px solid #e4e7ec;
+    overflow: hidden;
+}
+
+.sendClass{
+    width: 10%;
+}
+
+.sendbtn{
+    width: 100%;
+    resize: none;
+    height: 8vh;
+    padding: 5px;
+    font-size: 15pt;
+    color: #1E2A52;
+    border: none;
+    background-color: transparent;
+    padding-right: 10px;
+}
+
+.sendbtn:hover{
+    color: white;
+}
