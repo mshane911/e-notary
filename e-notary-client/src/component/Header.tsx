@@ -58,14 +58,14 @@ export default function Header(){
             </div>
             <nav className='navLinks'>
                 <ul>
-                    <li className="link"><a href = "#verifyDocument">Verify Document</a></li>
-                    <li className="link"><a href = "#uploadDocument">Upload Document</a></li>
+                    <li className="link"><a href = "/home">Verify Document</a></li>
+                    <li className="link"><a href = "/signaturepage">Upload Document</a></li>
                     <li className="link"><a href = "#askUs">Ask Us</a></li>
                 </ul>
             </nav>
             <div className='buttonLinks'>
                 <button className="logOutBtn" onClick={userLogOut}>Log Out</button>
-                <FontAwesomeIcon icon={faCircleUser} className='profileIcon'/>
+                <a href="/profile"><FontAwesomeIcon icon={faCircleUser} className='profileIcon'/></a>
             </div>
 
             <div className='navToggle' onClick={openNavBar}>
@@ -73,12 +73,12 @@ export default function Header(){
             </div>
             <nav className='mobileLink' id="mobileLink">
                 <ul>
-                    <li className="moblink"><a href = "#verifyDocument">Verify Document</a></li>
-                    <li className="moblink"><a href = "#uploadDocument">Upload Document</a></li>
+                    <li className="moblink"><a href = "/home">Verify Document</a></li>
+                    <li className="moblink"><a href = "/signaturepage">Upload Document</a></li>
                     <li className="moblink"><a href = "#askUs">Ask Us</a></li>
-                    <li className='moblink'><a href = "#profile">Profile</a></li>
-                    <li className="moblink"><a href = "#" onClick={(e) => {userLogOut(e)}}>Log Out</a></li>
-                </ul>
+                    <li className='moblink'><a href = "/profile">Profile</a></li>
+                    <li className="moblink"><a onClick={(e) => {userLogOut(e)}}>Log Out</a></li>
+                </ul>   
             </nav>
         </header>
     )

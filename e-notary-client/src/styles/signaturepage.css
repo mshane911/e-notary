@@ -1,0 +1,76 @@
+.fileinfo{
+    margin: 0px 48px 0 48px;
+    box-sizing: border-box;
+    color:#1E2A52;
+}
+
+.sectionTitle{
+    margin: 48px 0 0 48px;
+    padding:0;
+}
+
+.sectionSubtitle{
+    margin-top:0px;
+    margin-left: 48px;
+    padding:0;
+    font-weight: normal;
+}
+
+.col-6{
+    float: left;
+    width: calc(50% - 48px);
+    margin: 0 24px;
+}
+
+.col-12{
+    float: left;
+    width: 100%;
+    margin: 0 24px;
+}
+
+.signtable{
+    width:70vw;
+    height:3vw;
+    border:none;
+    color:#1E2A52;
+}
+.blankgap{
+    width:5vw;
+    height:3vw;
+}
+
+.generatesignaturebutton{
+    display: block;
+    border-radius: 16px;
+    border: none;
+    background-color:#1E2A52;
+    color: white;
+    width: calc(100% - 24px); 
+    padding: 12px;
+    font-size: 20px;  
+    margin: 48px 0;
+    cursor: pointer;
+}
+
+.generatesignaturebutton:hover{
+    background-color: #A9B4C2;
+    color: #1E2A52;
+}
+
+.spacing{
+    border-color: #A9B4C2;
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+input{
+    width:100%;
+    border:none;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-device-width: 667px){
+    .col-sm-12{width:100%;float:left;margin:0;}
+}

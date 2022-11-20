@@ -72,6 +72,7 @@ li, button{
     background-color:#4776E6;
     color: white;
     padding: 10px 24px;
+    cursor: pointer;
 }
 
 .buttonLinks{

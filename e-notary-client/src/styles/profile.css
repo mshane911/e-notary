@@ -1,16 +1,11 @@
-.line{
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 5%;
-    margin-top: 48px;
+.profile{
+    text-align: center;
+    color: #1E2A52;
+    font-family: 'Source Sans Pro', sans-serif;
     margin-bottom: 48px;
 }
 
-.profile{
-    text-align: center;
-}
-
-.profileIcon2{
+.userPic{
     color: black;
     width: 100%;
     margin-left: auto;
@@ -19,148 +14,140 @@
     margin-top: 50px;
 }
 
-.profileName1{
-    border: none;
-    color: black;
-    font-size: 20pt;
-    font-style: normal;
-    text-align: center;
-    margin: 30px 0 10px 0;
-}
-
-.profile p{
-    color: black;
-    font-size: 14pt;
-    font-style: normal;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.tableBorder{
-    border: 0;
-    color: black;
-    width: 100%;
-    padding-left: 20%;
-    padding-right: 20%;
-    padding-top: 5%;
-}
-
-.tdName{
-    width: 0%;
-}
-
-.space1{
-    width: 10%;
-}
-
-.tdPhone{
-    width: 40%;
-}
-
-.space2{
-    height: 1px;
-}
-
-.data1{
-    width: 15%;
-}
-
-.data2{
-    width: 15%;
-}
-.data3{
-    width: 15%;
-}
-.data4{
-    width: 15%;
-}
-.data5{
-    width: 15%;
-}
-
-.textfield1{
-    border: none;
-    padding: 1px 3px;
-    margin-left: 2px;
-    width: 96%;
-}
-
-.textfield2{
-    border: none;
-    padding: 1px 3px;
-    margin-left: 2px;
-    width: 96%;
-}
-
-.textfield3{
-    border: none;
-    padding: 1px 3px;
-    margin-left: 2px;
-    width: 96%;
-}
-
-.textfield4{
-    border: none;
-    padding: 1px 3px;
-    margin-left: 2px;
-    width: 96%;
-}
-
-.textfield5{
-    border: none;
-    padding: 1px 3px;
-    margin-left: 2px;
-    width: 96%;
-}
-
-.dropdownBox {
-    width: 45%;
-    margin-left: 2px;
-    padding-left: 3px;
-    margin: 8px 0px;
-}
-
-.saveNcancelTD{
-    width: 100%;
-}
-
-
-.saveButton{
-    border: none;
-    border-radius: 16px;
+#profileName, #editNameBtn{
     display: inline-block;
-    background-color:#B20D30;
-    color: white;
-    padding: 13px 0px;
-    font-size: 15pt;
-    font-family: 'Source Sans Pro', sans-serif;
-    margin-top: 48px;
-    width: 130px;
-    margin-left: 120px;
+    margin-left: 12px;
+    margin-bottom: 0;
 }
 
-.cancelButton{
+#profileName{
+    float: center;
+}
+
+#editNameBtn{
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#editNameBtn:hover{
+    color:#A9B4C2;
+}
+
+#profileUserType{
+    margin-top: 0;
+}
+
+#displayOnlyInfo,#editableInfo{
+    box-sizing: border-box;
+    color: #1E2A52;
+    margin: 24px 100px;
+}
+
+#editableInfo{
+    display: none;
+}
+
+.col-6{
+    float: left;
+    width: calc(50% - 48px);
+    margin: 0 24px;
+}
+
+.col-12{
+    float: left;
+    width: 100%;
+    margin: 0 24px;
+}
+
+.editBtnWrapper, .saveBtnWrapper{
+    display: flex;
+    justify-content: center;
+    margin: 48px 0;
+}
+
+.displaySection{
+    border-bottom: rgba(30, 42, 82, 0.5) solid 2px;
+}
+
+.formCategory{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.displayCategory{
+    margin: 8px auto;
+    font-size: 18px;
+}
+
+#editBtn, #saveBtn{
+    padding: 16px 20%;
+    border-radius: 12px;
     border: none;
-    border-radius: 16px;
-    display: inline-block;
-    background-color:#A9B4C2;
-    color: white;
-    padding: 13px 0px;
-    font-size: 15pt;
     font-family: 'Source Sans Pro', sans-serif;
-    margin-top: 48px;
-    width: 130px;
-    margin-left: 43px;
+    color:#1E2A52;
+    background-color: #A9B4C2;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
 }
 
-.space3{
-    width: 10%;
+#editBtn:hover, #saveBtn:hover{
+    background-color: rgb(131, 129, 129);
+    color:#fff;   
 }
 
-.saveButton :hover{
-    color: #A9B4C2;
+/* CUSTOM DROPDOWN */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.cancelButton :hover{
-    color: #A9B4C2;
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    background: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5px;
+}
+
+.select {
+    width: 100%;
+    border-bottom: none;
+    font-size: 18px;
+    margin: 8px auto;
+    cursor: pointer;
+}
+
+input{
+    border:none;
+    font-size: 18px;
+    color:#1E2A52;
+    height:fit-content;
+    width: 100%;
+    border-bottom: rgba(30, 42, 82, 0.5) solid 2px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.inputWrapper{
+    margin: 18px auto;
+    overflow: hidden;
+}
+
+
+/* MEDIA QUERIES */
+@media only screen and (max-device-width: 667px){
+    .col-sm-12{width:100%;float:left;margin:0;}
+    #displayOnlyInfo, #editableInfo{margin:0 24px;}
 }

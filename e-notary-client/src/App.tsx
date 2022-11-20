@@ -7,6 +7,8 @@ import Home from './component/Home'
 import Header from './component/Header'
 import Profile from './component/Profile'
 import Notaris from './component/Notaris'
+import SignaturePage from './component/SignaturePage';
+import Namecard from './component/Namecard';
 
 function App() {
   const appSetting = new CometChat.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(process.env.REACT_APP_COMET_REGION).build();
@@ -29,6 +31,8 @@ function App() {
         <Route path="/header" element={<Header />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/notaris" element={<Notaris />} />
+        <Route path="/signaturepage" element={<SignaturePage />} />
+        <Route path="/namecard" element={<Namecard />} /> 
       </Routes>
     </div>
   );

@@ -80,6 +80,11 @@
     padding: 8px 24px;
 }
 
+.labelInputWrapper:hover{
+    background-color: #A9B4C2;
+    color: #1E2A52;
+}
+
 input[type="file"] {
     display: none;
 }
@@ -107,7 +112,7 @@ input[type="file"] {
     margin: 0 48px;
 }
 
-.verifyDocBtn input, .addSignBtn input{
+.verifyDocBtn input, #signatureBtn{
     border: 4px solid rgba(0,0,0,0);
     border-radius: 16px;
     font-weight: bold;
@@ -135,10 +140,24 @@ input[type="file"] {
     color: #fff;
 }
 
+/* #signatureBtn{
+    width:100%;
+    font-family: 'Source Sans Pro', sans-serif;
+    border: 4px solid rgba(0,0,0,0);
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #1E2A52;
+    padding: 24px;
+    display: inline-block;
+
+} */
+
 #signatureBtn:hover, #verifyBtn:active:hover:not([disabled]){
     background-color: #fff;
     color: #1E2A52;
     border: #1E2A52 solid 4px;
+    cursor: pointer;
 }
 
 .mobileShow{
