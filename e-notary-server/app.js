@@ -4,12 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const fileUpload = require('express-fileupload');
+const socket = require('socket.io')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/user/users');
 
 const PORT = process.env.PORT || 9000
 var app = express();
+
+// For Chat app
+const http = require('http').Server(app);
+const cors = require('cors');
+
+app.use(cors());
 
 // Rate Limiting
 var RateLimit = require('express-rate-limit');
@@ -113,8 +120,11 @@ app.use(function (err, req, res, next) {
   res.send({ "error": err.message })
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 })
+
+const io = socket(server, { allowEIO3: true, maxHttpBufferSize: 1e8, cors: { origin: "http://localhost:3000" } });
+require('./utils/socket')(io);
 
 module.exports = app;
