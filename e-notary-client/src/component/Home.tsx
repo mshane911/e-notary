@@ -23,7 +23,6 @@ export default function Home(){
         phoneNumber?: string | number;
     }
     const [user, setUser] = useState(null);
-    // const [isBusy, setBusy] = useState(true);
 
     useEffect(() => {
         document.title = "Welcome to your dashboard"
@@ -37,7 +36,11 @@ export default function Home(){
     
     // TODO: Get user name
     const displayFileName = (files: FileList) => {
+        console.log(files)
+        // console.log(files[0])
         setUserFile(files)
+        // console.log(files)
+        // console.log(userFile)
         var value = (document.getElementById("fileInput") as HTMLInputElement).value
         const removeFile = document.getElementById("cancelInput")
         const verifyFile = document.getElementById("verifyBtn") as HTMLButtonElement | null;
@@ -45,6 +48,7 @@ export default function Home(){
         console.log("file not empty:", value !== "")
 
         value = value.replace(/.*[\/\\]/, '')
+        // console.log(value)
         document.getElementById("fileNameField").innerHTML = value
 
         value !== "" ? removeFile.style.visibility = "visible" : removeFile.style.visibility = "hidden"
@@ -71,11 +75,11 @@ export default function Home(){
         setUserFile(uploadedUserFile) // bisa diapus
 
         const formData = new FormData();
-        formData.append('file', uploadedUserFile)
+        formData.append('document', uploadedUserFile)
 
         const config = {
             method: "POST",
-            url: "/api/usign/uploadFile/",
+            url: "/api/usign/storePdf/",
             data: formData,
         }
         console.log(files)
@@ -91,8 +95,8 @@ export default function Home(){
                 console.log(err)
             }
         )
-        
-        navigate('/signaturepage', {replace: true})
+        // window.location.href = '/signaturepage'
+        navigate('/signaturepage')
     }
 
     //TODO: add more input checks for pdf
@@ -120,7 +124,7 @@ export default function Home(){
                     </div>
                 </div>
                 
-                <form encType="multipart/form-data" action='/api/usign/uploadFile' method='post' >
+                <form encType="multipart/form-data" action='/api/usign/storePdf' method='post' >
                     <div className='fileInputWrapper'>
                         <div className='leftWrapper'>
                             <p className='fileName' id="fileNameField">No file chosen</p>
