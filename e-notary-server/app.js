@@ -54,7 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 
 // serve static files from dir pdf
-app.use('/files', express.static('pdf'));
+app.use('/pdf', express.static('pdf'));
 
 // ROUTES
 const registRouter = require('./routes/user/registration');
@@ -66,15 +66,13 @@ const getUserRouter = require('./routes/user/getUser');
 const createUsignTokenRouter = require('./routes/usign/createToken');
 const authUsignTokenRouter = require('./routes/usign/authToken');
 const signDocumentRouter = require('./routes/usign/signDocument');
-// const uploadFileRouter = require('./routes/usign/uploadFile');
 const storePdfRouter = require('./routes/usign/storePdf');
-const listUserPdfNames = require('./routes/usign/listUserPdfNames');
 
 
 const createBotRouter = require('./routes/langcode/createBot');
 const deleteBotRouter = require('./routes/langcode/deleteBot');
 const getBotsRouter = require('./routes/langcode/getBots');
-// // const uploadFileToBotRouter = require('./routes/langcode/uploadFileToBot');
+const uploadFileToBotRouter = require('./routes/langcode/uploadFileToBot');
 const getDocumentsInBotRouter = require('./routes/langcode/getDocumentsInBot');
 const deleteDocumentRouter = require('./routes/langcode/deleteDocument');
 const sendMessageToBotRouter = require('./routes/langcode/sendMessageToBot');
@@ -93,14 +91,12 @@ app.use('/api/users', usersRouter);
 app.use('/api/usign/createUsignToken', createUsignTokenRouter);
 app.use('/api/usign/authUsignToken', authUsignTokenRouter);
 app.use('/api/usign/signDocument', signDocumentRouter);
-// app.use('/api/usign/uploadFile', uploadFileRouter)
 app.use('/api/usign/storePdf', storePdfRouter);
-app.use('/api/usign/listUserPdfNames', listUserPdfNames);
 
 app.use('/api/langcode/createBot', createBotRouter);
 app.use('/api/langcode/deleteBot', deleteBotRouter);
 app.use('/api/langcode/getBots', getBotsRouter);
-// // app.use('/api/langcode/uploadFileToBot', uploadFileToBotRouter);
+app.use('/api/langcode/uploadFileToBot', uploadFileToBotRouter);
 app.use('/api/langcode/getDocumentsInBot', getDocumentsInBotRouter);
 app.use('/api/langcode/deleteDocument', deleteDocumentRouter);
 app.use('/api/langcode/sendMessageToBot', sendMessageToBotRouter);

@@ -9,12 +9,11 @@ router.post("/", auth, (req, res, next) => {
     const userId = req.user.userId;
     if (req.files) {
         var file = req.files.document;
-        var fileName = sanitize(file.name);
-        var dir = `./pdf/${userId}`;
+        var dir = `./pdf/sign/${userId}`;
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
         }
-        var uploadPath = `./pdf/${userId}/${fileName}`;
+        var uploadPath = `${dir}/${userId}.pdf`;
         
 
         file.mv(uploadPath, function (err) {
