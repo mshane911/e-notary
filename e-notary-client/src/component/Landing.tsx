@@ -37,14 +37,14 @@ export default function Landing() {
     }
 
     // POST for Sign Up
-    function checkValiditySignUp(){
-        name === "" ?  document.getElementById('nameError').style.visibility = "visible" : document.getElementById('nameError').style.visibility = "hidden"
+    function checkValiditySignUp() {
+        name === "" ? document.getElementById('nameError').style.visibility = "visible" : document.getElementById('nameError').style.visibility = "hidden"
         email === "" ? document.getElementById('emailError').style.visibility = "visible" : document.getElementById('emailError').style.visibility = "hidden"
         password.length < 8 ? document.getElementById('passError').style.visibility = "visible" : document.getElementById('passError').style.visibility = "hidden"
-        passwordConfirm === "" || password !== passwordConfirm ?  document.getElementById('passError2').style.visibility = "visible" :  document.getElementById('passError2').style.visibility = "hidden"
-        userType === "" ?  document.getElementById('typeError').style.visibility = "visible" :  document.getElementById('typeError').style.visibility = "hidden"
+        passwordConfirm === "" || password !== passwordConfirm ? document.getElementById('passError2').style.visibility = "visible" : document.getElementById('passError2').style.visibility = "hidden"
+        userType === "" ? document.getElementById('typeError').style.visibility = "visible" : document.getElementById('typeError').style.visibility = "hidden"
 
-        if(name === "" || email === "" || password.length < 8 || passwordConfirm === "" || passwordConfirm !== password || userType === ""){
+        if (name === "" || email === "" || password.length < 8 || passwordConfirm === "" || passwordConfirm !== password || userType === "") {
             return false
         }
         return true
@@ -81,7 +81,7 @@ export default function Landing() {
     }
 
     //POST for Sign In
-    function checkValiditySignIn(){
+    function checkValiditySignIn() {
         userEmail === "" ? document.getElementById('signInEmail').style.visibility = "visible" : document.getElementById('signInEmail').style.visibility = "hidden"
         userPass === "" ? document.getElementById('signInPassword').style.visibility = "visible" : document.getElementById('signInPassword').style.visibility = "hidden"
 
@@ -104,8 +104,8 @@ export default function Landing() {
             .then(
                 (res) => {
                     alert(res.data.message)
-                    navigate('/home' , {replace: true})
-                    
+                    navigate('/home', { replace: true })
+
                 }
             )
             .catch(
@@ -115,7 +115,7 @@ export default function Landing() {
                 }
             );
 
-        
+
 
         return false
     }
@@ -153,7 +153,7 @@ export default function Landing() {
                             <small id="nameError">Please enter your name!</small>
 
                             <div className='inputContainer'>
-                            <FontAwesomeIcon icon={faEnvelope} className="formIcon" />
+                                <FontAwesomeIcon icon={faEnvelope} className="formIcon" />
                                 <input type="text" id="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" className="textInput" placeholder="Email" name="email" onChange={(e) => setEmail(e.target.value)} required></input>
                             </div>
                             <small id="emailError">Please enter a valid email!</small>
@@ -161,12 +161,12 @@ export default function Landing() {
                             <div className='inputContainer'>
                                 <FontAwesomeIcon icon={faLock} className="formIcon" />
                                 <input type="password" id="pass" autoComplete='on' className="textInput" placeholder="Password" name="pass" onChange={(e) => setPassword(e.target.value)} required></input>
-                            </div> 
+                            </div>
                             <small id="passError">Please enter a password (min. 8 characters) </small>
 
                             <div className='inputContainer'>
                                 <FontAwesomeIcon icon={faLock} className="formIcon" />
-                                <input type="password" id="passConfirm" autoComplete='on' className="textInput" placeholder="Confirm Your Password" name="passconfirm" onChange={(e) => { setPasswordConfirm(e.target.value)}} required></input>
+                                <input type="password" id="passConfirm" autoComplete='on' className="textInput" placeholder="Confirm Your Password" name="passconfirm" onChange={(e) => { setPasswordConfirm(e.target.value) }} required></input>
                             </div>
                             <small id="passError2">Please input the same password!</small>
 
@@ -175,7 +175,7 @@ export default function Landing() {
                                     <option selected disabled>Select Account Type</option>
                                     <option value="employee">Employee</option>
                                     <option value="company">Company</option>
-                                    <option value="notary">Notary</option> 
+                                    <option value="notary">Notary</option>
                                 </select>
                             </div>
                             <small id="typeError">Please select your account type!</small>
@@ -188,7 +188,7 @@ export default function Landing() {
                         <div className='submitWrapper'>
                             <input type="submit" value="Create Account" className='signUpSubmit' onClick={submitSignUp}></input>
                         </div>
-                        
+
                     </form>
                 </div>
 
@@ -199,14 +199,14 @@ export default function Landing() {
                         <p className='formSubtitle'>Please Fill in Your Details </p>
                         <div className='formContent'>
                             <div className='inputContainer'>
-                            <FontAwesomeIcon icon={faEnvelope} className="formIcon" />
+                                <FontAwesomeIcon icon={faEnvelope} className="formIcon" />
                                 <input type="text" className="textInput" placeholder="Email" name="email" onChange={(e) => setUserEmail(e.target.value)} required></input>
                             </div>
                             <small id="signInEmail">Please enter a valid email!</small>
 
                             <div className='inputContainer'>
                                 <FontAwesomeIcon icon={faLock} className="formIcon" />
-                                <input type="password" autoComplete='on' className="textInput" placeholder="Password" name="pass" onChange={(e) => setUserPass(e.target.value)}     required></input>
+                                <input type="password" autoComplete='on' className="textInput" placeholder="Password" name="pass" onChange={(e) => setUserPass(e.target.value)} required></input>
                             </div>
                             <small id="signInPassword">Please enter a valid password!</small>
 
@@ -215,7 +215,7 @@ export default function Landing() {
                         <div className='submitWrapper'>
                             <input type="submit" value="Sign In" className='signInSubmit' onClick={submitSignIn}></input>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>

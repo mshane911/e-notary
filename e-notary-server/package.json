@@ -24,6 +24,7 @@
     "morgan": "~1.9.1",
     "nodemon": "^2.0.20",
     "sanitize-filename": "^1.6.3",
-    "serve-static": "^1.15.0"
+    "serve-static": "^1.15.0",
+    "socket.io": "^4.5.3"
   }
 }
