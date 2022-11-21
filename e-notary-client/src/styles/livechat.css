@@ -1,0 +1,112 @@
+body{
+    color: #1E2A52;
+    overflow-x: hidden;
+}
+
+.onlineCircle{
+    color: #0FA958;
+    padding: 0 8px;
+}
+
+.room-message{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #A9B4C2;
+    margin: 0;
+    padding: 12px;
+}
+
+.window{
+    margin: 48px;
+}
+
+.sendBtn, .message, .form-container, .messageField, .upload-field{
+    display: inline-block;
+}
+
+.form-container{
+    background-color: #1E2A52;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+.message{
+    width: calc(90% - 24px);
+    margin: 0 12px;
+    padding: 24px 12px;
+    border-radius: 16px;
+    border: none;
+}
+
+.sendBtn{
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    border: none;
+    cursor: pointer;
+}
+
+.sendBtn:hover, #upload:hover{
+    background-color: #A9B4C2;
+    color:#fff;
+}
+
+#upload{
+    font-weight: bold;
+    height: 60px;
+    width:100%;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+.attachIcon{
+    margin-left: 4px;
+}
+
+.messageField{
+    margin: 0;
+    padding: 30px 12px;
+    width: 90%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-field{
+    width:calc(10% - 12px);
+    margin-right: 12px;
+   
+}
+
+.chat-message{
+    text-align: right;
+}
+
+.message__chats{
+    background-color: #bbc7d6;
+    color: #000;
+    padding: 24px;
+    margin: 12px 0;
+    text-align: right;
+    border-radius: 16px;
+}
+
+.chat-message{
+    height: 100%;
+}
+
+/* MEDIA QUERY */
+@media only screen and (max-device-width:900px){
+    .mobileHidden{display: none;}
+    #upload{border-radius: 1000px;}
+}
