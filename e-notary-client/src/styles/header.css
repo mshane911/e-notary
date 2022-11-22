@@ -7,6 +7,9 @@ header{
     width: 100vw;
     height: auto;
     font-family: 'Source Sans Pro', sans-serif;
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 button{
@@ -128,3 +131,26 @@ li, button{
     .mobileLink{position: absolute; top:45px;background-color: #1E2A52;width: 100vw;}
     .moblink{display: block; margin: 24px 0;}
 }
+
+/* CUSTOM NAVBAR */
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow:  0 0 5px grey; 
+    border-radius: 8px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #d3d3d3; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #969696; 
+  }

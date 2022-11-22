@@ -115,7 +115,9 @@ export default function Home() {
                             <br />
                             <div className='belowName'>
                                 <span className="helpText">What can I help you with today?</span>&emsp;
-                                <span className="needsignature"><br className='mobileShow' />I need a signature</span>
+                                <span className="needsignature"><br className='mobileShow' />
+                                    <div className='changingText'></div>
+                                </span>
                             </div>
                         </div>
 

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import React from 'react';
 import { randomUUID } from 'crypto';
 import { FormEvent, useEffect, useState } from 'react';
 import { io, Socket } from "socket.io-client"
@@ -6,6 +7,12 @@ import { ClientChatData } from '../common/types/ClientChatData';
 import { ClientToServerEvents } from '../common/types/ClientToServerEvents';
 import { ServerChatData } from '../common/types/ServerChatData';
 import { ServerToClientEvents } from '../common/types/ServerToClientEvents';
+
+import '../styles/livechat.css'
+import Header from './Header'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircle, faPaperPlane, faPaperclip } from '@fortawesome/free-solid-svg-icons'
+import { stringify } from 'querystring';
 
 interface User {
     _id: string | number;
@@ -34,6 +41,7 @@ export function LiveChat() {
     const [messages, setMessages] = useState(() => {
         return JSON.parse(localStorage.getItem("chatMessages")) || []
     });
+    const [curTime, setCurTime] = useState("")
 
     const username = localStorage.getItem("userName");
     const roomname = localStorage.getItem("chatRoomId");
@@ -45,6 +53,7 @@ export function LiveChat() {
     });
 
     useEffect(() => {
+        document.title = "Chat with E-Notary"
         socket.on('chat', (data: ServerChatData) => {
             setMessages([...messages, data]);
             localStorage.setItem("chatMessages", JSON.stringify(messages));
@@ -83,14 +92,23 @@ export function LiveChat() {
 
     return (
         <div>
-            <h1 className="room-message"></h1>
+            <Header />
+            <h3 className="room-message">
+                You're now connected to our notary!
+                <FontAwesomeIcon icon={faCircle} className="onlineCircle" />
+            </h3>
             <div className="window">
                 <div className="chat-message">
                     <div id="output">
                         {messages.map((message: { username: string, message: string }) =>
                             message.username === localStorage.getItem('userName') ? (
-                                <div className="message__chats" key={message.username + message.message + randomUUID}>
-                                    <p className="sender__name"><b>You:</b>{message.message}</p>
+                                <div>
+                                    <div className="message__chats" key={message.username + message.message + randomUUID}>
+                                        <p className="sender__name">{message.message}</p>
+                                    </div>
+                                    <div>
+                                        <p><b>You  </b></p>
+                                    </div>
                                 </div>
                             ) : (
                                 <div className="message__chats" key={message.username + message.message + randomUUID}>
@@ -100,6 +118,8 @@ export function LiveChat() {
                         )}
                     </div>
                 </div>
+            </div>
+            <div className='form-container'>
                 <form className="messageField" onSubmit={handleSendMessage}>
                     <input
                         type="text"
@@ -108,20 +128,18 @@ export function LiveChat() {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                     />
-                    <button className="sendBtn">SEND</button>
+                    <button className="sendBtn"><FontAwesomeIcon icon={faPaperPlane} /></button>
                 </form>
                 <form className="upload-field" onSubmit={handleUploadFile}>
                     <label>
                         <input type="file" id="file" className='file-upload' onChange={(e) => setFile(e.target.files[0])} />
                         <i>Attach File</i>
                     </label>
-                    <button id="upload">Upload</button>
+                    <button id="upload">
+                        <p className='mobileHidden'>Upload </p>
+                        <FontAwesomeIcon icon={faPaperclip} className="attachIcon"/>
+                    </button>
                 </form>
-            </div >
-            <div className="online">
-                <p className="users-online">Users Online</p>
-                <div className="users">
-                </div>
             </div>
         </div >
     )
