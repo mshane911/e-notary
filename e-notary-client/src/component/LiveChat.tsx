@@ -181,7 +181,7 @@ export function LiveChat() {
             <div className='form-container'>
                 <form className="upload-field" onSubmit={handleUploadFile}>
                     <div className='input-doc'>
-                        <div className='filename-display'>
+                        <div className='filename-display'> 
                             <label htmlFor='user-file-upload'>
                                 <p className="mobileHidden input-btn-label" id="btn-label">Click here to select a file</p>
                             </label>
@@ -190,6 +190,7 @@ export function LiveChat() {
                         {/* <div className='file-label'> */}
                         <button className="mobileHidden send-file-btn">Upload
                         </button>
+            
                         {/* </div> */}
                     </div>
 
