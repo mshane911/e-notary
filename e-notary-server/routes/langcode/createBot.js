@@ -13,10 +13,11 @@ router.post("/", (req, res, next) => {
     var url = "https://hack-5.langcode.io/api/Hackathon/CreateBot/";
     axios.post(url, data, config)
         .then((apiRes) => {
+            console.log(apiRes.data)
             res.send(apiRes.data)
         })
         .catch((err) => {
-            res.send({message: err.message})
+            res.send({ message: err.message })
         })
 });
 
