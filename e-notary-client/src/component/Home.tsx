@@ -8,7 +8,7 @@ import axios from 'axios'
 
 import { useNavigate } from 'react-router-dom'
 
-export default function Home(){
+export default function Home() {
     const navigate = useNavigate()
     const [userFile, setUserFile] = useState(null)
 
@@ -27,12 +27,13 @@ export default function Home(){
     useEffect(() => {
         document.title = "Welcome to your dashboard"
         axios.get('/api/getUser')
-        .then((response) => {
-            const user: User = response.data;
-            setUser(user);
-            console.log(user);
-        })
+            .then((response) => {
+                const user: User = response.data;
+                setUser(user);
+                console.log(user);
+            })
     }, []);
+
 
     useEffect(() => {
         console.log(userFile)
@@ -64,6 +65,7 @@ export default function Home(){
         removeFile.style.visibility = "hidden"
     }
 
+
     async function storePdf () {
         // save document to database
         console.log("---saving doc to db---")
@@ -77,22 +79,15 @@ export default function Home(){
             data: formData,
         }
 
+
         const response = await axios(config)
         console.log(response.data)
-        
-        // axios(config).then(
-        //     (res) => {
-        //         console.log(res)
-        //         console.log(res.data)
-        //     }).catch((err) => {
-        //         console.log(err)
-        //     }
-        // )
-        console.log("---end of saving doc to db---")
+
     }
 
     function goToSignature(){
         navigate('/signaturepage')
+
     }
 
     var isOpen = false;
@@ -118,6 +113,7 @@ export default function Home(){
             return <h1>Loading...</h1>
         } else {
             return (
+
             <div>
             <Header />            
 
@@ -147,11 +143,6 @@ export default function Home(){
                             </label>
                             <input type="file" id="fileInput" accept="application/pdf" onChange={(e) => {setUserFile(e.target.files)}}/>
                         </div>
-                    </div>
-                    <div  id="cancelInput" onClick={removeUploadedFile}>
-                        <p className='removeFileLabel'>Remove File</p>
-                        <FontAwesomeIcon icon={faTrash}/>
-                    </div>
 
                     <div className='submitWrapper'>
                         <div className='addSignBtn'>
@@ -182,14 +173,13 @@ export default function Home(){
                             </div>
                         </div>
                     </div>
+
                 </div>
-            </div>
-        </div>
-        )
+            )
         }
     }
 
-    return(
+    return (
         <div>
             <Dashboard />
         </div>

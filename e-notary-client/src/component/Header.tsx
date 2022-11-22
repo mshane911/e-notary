@@ -60,7 +60,7 @@ export default function Header(){
                 <ul>
                     <li className="link"><a href = "/home">Verify Document</a></li>
                     <li className="link"><a href = "/signaturepage">Upload Document</a></li>
-                    <li className="link"><a href = "#askUs">Ask Us</a></li>
+                    <li className="link"><a href = "/chat">Ask Us</a></li>
                 </ul>
             </nav>
             <div className='buttonLinks'>
@@ -75,7 +75,7 @@ export default function Header(){
                 <ul>
                     <li className="moblink"><a href = "/home">Verify Document</a></li>
                     <li className="moblink"><a href = "/signaturepage">Upload Document</a></li>
-                    <li className="moblink"><a href = "#askUs">Ask Us</a></li>
+                    <li className="moblink"><a href = "/chat">Ask Us</a></li>
                     <li className='moblink'><a href = "/profile">Profile</a></li>
                     <li className="moblink"><a onClick={(e) => {userLogOut(e)}}>Log Out</a></li>
                 </ul>   
