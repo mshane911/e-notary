@@ -1,6 +1,7 @@
 {
   "name": "e-notary-client",
   "version": "0.1.0",
+  "homepage": "https://mshane911.github.io/e-notary/",
   "private": true,
   "dependencies": {
     "@cometchat-pro/chat": "^3.0.10",
@@ -21,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
+    "socket.io-client": "^4.5.3",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"
   },
@@ -28,7 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -48,5 +52,12 @@
       "last 1 safari version"
     ]
   },
+<<<<<<< HEAD
   "proxy": "http://localhost:9000"
+=======
+  "proxy": "http://localhost:9000",
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  }
+>>>>>>> 396761f0f55c6d35586fd433e0f9dca4a3c5c9d6
 }

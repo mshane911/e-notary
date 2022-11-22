@@ -27,11 +27,14 @@
 
 .helpText{
     font-size: 20px;
+    display: inline-block;
+    width: fit-content;
 }
 
 .needsignature{
     color:#A9B4C2;
     font-size: 20px;
+    display: inline-block;
 }
 
 .fileInputWrapper{
@@ -170,6 +173,30 @@ input[type="file"] {
 
 .mobileHidden{
     display: inline-block;
+}
+
+.changingText::before{
+    animation: changeText infinite 5s;
+    content: "I need a signature";
+    display: inline-block;
+}
+
+@keyframes changeText {
+    0%{
+        content: "I need to make an e-signature";
+    }
+    20%{
+        content: "I need to verify my documents";
+    }
+    40%{
+        content: "I need to check the content of my documents";
+    }
+    60%{
+        content: "I need to talk to a Notary";
+    }
+    80%{
+        content: "I need to check an e-signature";
+    }
 }
 
 /* UNCOMMENT WHEN USIGN IS CONNECTED TO THE PAGE */
