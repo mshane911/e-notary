@@ -1,3 +1,6 @@
+.line{
+    overflow-x: hidden;
+}
 .profile{
     text-align: center;
     color: #1E2A52;
@@ -14,14 +17,25 @@
     margin-top: 50px;
 }
 
-#profileName, #editNameBtn{
+#profileName{
+    font-family: 'Source Sans Pro', sans-serif;
     display: inline-block;
-    margin-left: 12px;
     margin-bottom: 0;
+    text-align: center;
+    font-size: 20pt;
+    font-weight: bold;
+    padding-top: 20px;
 }
 
-#profileName{
-    float: center;
+.profileName1{
+    border: none;
+    height: 75px;
+    margin-top: 0;
+}
+
+.profileName2{
+    border: none;
+    height: 75px;
 }
 
 #editNameBtn{
@@ -57,8 +71,10 @@
     float: left;
     width: 100%;
     margin: 0 24px;
+    padding-top: 50px;
+    padding-bottom: 48px;
 }
-
+    
 .editBtnWrapper, .saveBtnWrapper{
     display: flex;
     justify-content: center;
@@ -145,6 +161,12 @@ input{
     overflow: hidden;
 }
 
+.inputNumber::-webkit-outer-spin-button, .inputNumber::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+.inputNumber[type=number] {
+    -moz-appearance: textfield;
+  }
 
 /* MEDIA QUERIES */
 @media only screen and (max-device-width: 667px){

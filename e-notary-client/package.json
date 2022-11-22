@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.0.6",
     "axios": "^1.1.3",
     "dotenv": "^16.0.3",
+    "file-system": "^2.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.2",
@@ -51,8 +52,12 @@
       "last 1 safari version"
     ]
   },
+<<<<<<< HEAD
+  "proxy": "http://localhost:9000"
+=======
   "proxy": "http://localhost:9000",
   "devDependencies": {
     "gh-pages": "^4.0.0"
   }
+>>>>>>> 396761f0f55c6d35586fd433e0f9dca4a3c5c9d6
 }

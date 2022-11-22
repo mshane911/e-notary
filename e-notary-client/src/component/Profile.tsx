@@ -29,8 +29,7 @@ export default function Profile(){
             <div id='displayOnlyInfo'>
                 <div className='profile'>
                     <FontAwesomeIcon icon={faCircleUser} className='userPic'/>
-                    <h1 id='profileName'>John Doe</h1>
-                    <FontAwesomeIcon icon={faPencil} id="editNameBtn" />
+                    <h1 id='profileName' className='profileName1'>John Doe</h1>
                     <p id="profileUserType">Personal Account</p>
                 </div>
             
@@ -46,7 +45,7 @@ export default function Profile(){
                 </div>
                 <div className='row'>
                     <div className='col-6 col-sm-12 displaySection'>
-                        <p className='formCategory'>Country</p>
+                        <p className='formCategory'>Country<br/></p>
                         <p className="displayCategory">Singapore</p>
                     </div>
                     <div className='col-6 col-sm-12 displaySection'>
@@ -61,12 +60,11 @@ export default function Profile(){
                     </div>
                 </div>
             </div>
-            
             <div id='editableInfo'>
                 <form>
                     <div className='profile'>
                         <FontAwesomeIcon icon={faCircleUser} className='userPic'/>
-                        <h1 id='profileName'>John Doe Editable</h1>
+                        <textarea id ='profileName' className='profileName2'>John Doe Editable</textarea>
                         <p id="profileUserType">Personal Account</p>
                     </div>
                 
@@ -83,25 +81,25 @@ export default function Profile(){
                         <div className='col-6 col-sm-12 formSection'>
                             <p className='formCategory'>Phone Number</p>
                             <div className='inputWrapper'>
-                                <input type="number" placeholder='1234567890' />
+                                <input type="number" className='inputNumber' placeholder='1234567890' />
                             </div>
                         </div>
                     </div>
                     <div className='row'>
                         <div className='col-6 col-sm-12 formSection'>
                             <p className='formCategory'>Country</p>
-                            <input type="number" placeholder='Singapore' />
+                            <input type="text" placeholder='Singapore' />
                         </div>
                         <div className='col-6 col-sm-12 formSection'>
                             <p className='formCategory'>Email Address</p>
-                            <input type="number" placeholder='mail@mail.com' />
+                            <input type="text" placeholder='mail@mail.com' />
                         </div>
                     </div>
                     <div className='row'>
                     <div className='col-12 saveBtnWrapper'>
                         <button id="saveBtn" onClick={displayForm}>Save Changes</button>
                     </div>
-                </div>
+                    </div>
                 </form>
             </div>
         </div>
