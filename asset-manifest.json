@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/e-notary/static/css/main.b9050122.css",
+    "main.js": "/e-notary/static/js/main.8c93953b.js",
+    "static/media/landing-img.jpg": "/e-notary/static/media/landing-img.40676b9d67d7e5c8f5d0.jpg",
+    "static/media/mobile_logo.png": "/e-notary/static/media/mobile_logo.5893f8198c24c1556317.png",
+    "static/media/logo.png": "/e-notary/static/media/logo.55945f1c95f6260af161.png",
+    "index.html": "/e-notary/index.html",
+    "main.b9050122.css.map": "/e-notary/static/css/main.b9050122.css.map",
+    "main.8c93953b.js.map": "/e-notary/static/js/main.8c93953b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b9050122.css",
+    "static/js/main.8c93953b.js"
+  ]
+}
