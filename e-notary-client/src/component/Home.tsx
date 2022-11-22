@@ -33,71 +33,68 @@ export default function Home(){
             console.log(user);
         })
     }, []);
+
+    useEffect(() => {
+        console.log(userFile)
+        if (userFile != null) {
+            if (userFile == "") {
+                removeUploadedFile()
+                return
+            }
+            console.log("userFile is not null")
+            console.log(userFile[0])
+            console.log(userFile[0].name)
+
+            const removeFile = document.getElementById("cancelInput")
+
+            document.getElementById("fileNameField").innerHTML = userFile[0].name
+
+            removeFile.style.visibility = "visible"
+
+            storePdf();
+            
+        }
+    }, [userFile])
     
-    // TODO: Get user name
-    const displayFileName = (files: FileList) => {
-        console.log(files)
-        // console.log(files[0])
-        setUserFile(files)
-        // console.log(files)
-        // console.log(userFile)
-        var value = (document.getElementById("fileInput") as HTMLInputElement).value
-        const removeFile = document.getElementById("cancelInput")
-        const verifyFile = document.getElementById("verifyBtn") as HTMLButtonElement | null;
-
-        console.log("file not empty:", value !== "")
-
-        value = value.replace(/.*[\/\\]/, '')
-        // console.log(value)
-        document.getElementById("fileNameField").innerHTML = value
-
-        value !== "" ? removeFile.style.visibility = "visible" : removeFile.style.visibility = "hidden"
-        value !== "" ? verifyFile.disabled = false : verifyFile.disabled = true
-    }
-
     const removeUploadedFile = () => {
-        var input = (document.getElementById("fileInput") as HTMLInputElement).value
-        const removeFile = document.getElementById("cancelInput")
-        const verifyFile = document.getElementById("verifyBtn") as HTMLButtonElement | null;
-
-        input = ""
+        setUserFile("")
+        console.log("userFile is null")
         document.getElementById("fileNameField").innerHTML = "No file chosen"
-
-        console.log((document.getElementById("fileNameField") as HTMLInputElement).value)
-
-        input !== "" ? removeFile.style.visibility = "visible" : removeFile.style.visibility = "hidden"
-        input !== "" ? verifyFile.disabled = false : verifyFile.disabled = true
+        const removeFile = document.getElementById("cancelInput")
+        removeFile.style.visibility = "hidden"
     }
 
-    function uploadToSignature(files: FileList){
-        // get file
-        const uploadedUserFile = files[0]
-        setUserFile(uploadedUserFile) // bisa diapus
-
+    async function storePdf () {
+        // save document to database
+        console.log("---saving doc to db---")
         const formData = new FormData();
-        formData.append('document', uploadedUserFile)
+        formData.append('document', userFile[0])
+        console.log(userFile[0])
 
         const config = {
             method: "POST",
             url: "/api/usign/storePdf/",
             data: formData,
         }
-        console.log(files)
-        
-        axios(config).then(
-            (res) => {
-                console.log(res)
-                console.log(res.data)
-                console.log(res.data.url)
 
-                // window.location.href = '/signaturepage'
-            }).catch((err) => {
-                console.log(err)
-            }
-        )
-        // window.location.href = '/signaturepage'
+        const response = await axios(config)
+        console.log(response.data)
+        
+        // axios(config).then(
+        //     (res) => {
+        //         console.log(res)
+        //         console.log(res.data)
+        //     }).catch((err) => {
+        //         console.log(err)
+        //     }
+        // )
+        console.log("---end of saving doc to db---")
+    }
+
+    function goToSignature(){
         navigate('/signaturepage')
     }
+
 
     //TODO: add more input checks for pdf
     //TODO: Display verify label based on usign
@@ -135,7 +132,7 @@ export default function Home(){
                                 <p className="mobileHidden inputBtnLabel">Upload File</p>
                                 <FontAwesomeIcon icon={faUpload} className="inputBtn" />
                             </label>
-                            <input type="file" id="fileInput" accept="application/pdf" onChange={(e) => {displayFileName(e.target.files)}}/>
+                            <input type="file" id="fileInput" accept="application/pdf" onChange={(e) => {setUserFile(e.target.files)}}/>
                         </div>
                     </div>
                     <div  id="cancelInput" onClick={removeUploadedFile}>
@@ -148,7 +145,7 @@ export default function Home(){
                             <input type="submit" value="Verify This Document" disabled id='verifyBtn'/>
                         </div>
                         <div className='addSignBtn'>
-                            <input type="submit" id='signatureBtn' value="Add Your Signature" onClick={() => uploadToSignature(userFile)}></input>
+                            <input type="submit" id='signatureBtn' value="Add Your Signature" onClick={goToSignature}></input>
                         </div>
                     </div>
                 </form>
@@ -166,10 +163,6 @@ export default function Home(){
         )
         }
     }
-
-    //TODO: add more input checks for pdf
-    //TODO: Display verify label based on usign
-    //TODO: pass file to signature page
 
     return(
         <div>
