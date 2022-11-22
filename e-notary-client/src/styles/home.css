@@ -1,3 +1,7 @@
+.all{
+    overflow-x: hidden;
+}
+
 .dashboard{
     width: 100vw;
     overflow: hidden;
@@ -125,7 +129,7 @@ input[type="file"] {
 
 .verifyDocBtn, .addSignBtn{
     display: inline-block;
-    width: calc(50% - 72px);
+    width: calc(100% - 130px);
     box-sizing: border-box;
     margin: 0 12px;
 }
@@ -185,6 +189,56 @@ input[type="file"] {
 
 .verifyStatusGood, .verifyStatusBad{
     display: none;
+}
+
+.instruction{
+    margin-top: 70px;
+    margin-left: 48px;
+}
+
+.viewInstruction{
+    width: 100%;
+    display: flex;
+    padding-right: 15px ;
+}
+
+/* .howtoview{
+    padding-right: 15px ;
+} */
+
+.caretDownbtn{
+    border: none;
+    background-color: transparent;
+    font-size: 12pt;
+}
+
+.caretDown{
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    margin-left: 13px;
+}
+
+.caretDownbtn:hover{
+    color: #A9B4C2;
+}
+
+.instructionWrapper{
+    padding-bottom: 48px;
+}
+
+.instructionList{
+    display: none;
+    font-size: 12pt;
+    margin-left: 5px;
+}
+
+.photo1{
+    width: 100%;
+}
+
+.photo2{
+    width: 100%;
 }
 
 /* MEDIA QUERIES */
