@@ -3,7 +3,7 @@ import '../styles/home.css'
 import Header from './Header'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUpload, faTrash, faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import { faUpload, faTrash, faCircleCheck, faCircleXmark, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 
 import { useNavigate } from 'react-router-dom'
@@ -34,65 +34,75 @@ export default function Home() {
             })
     }, []);
 
-    // TODO: Get user name
-    const displayFileName = (files: FileList) => {
-        setUserFile(files)
-        var value = (document.getElementById("fileInput") as HTMLInputElement).value
-        const removeFile = document.getElementById("cancelInput")
-        const verifyFile = document.getElementById("verifyBtn") as HTMLButtonElement | null;
 
-        console.log("file not empty:", value !== "")
+    useEffect(() => {
+        console.log(userFile)
+        if (userFile != null) {
+            if (userFile == "") {
+                removeUploadedFile()
+                return
+            }
+            console.log("userFile is not null")
+            console.log(userFile[0])
+            console.log(userFile[0].name)
 
-        value = value.replace(/.*[\/\\]/, '')
-        document.getElementById("fileNameField").innerHTML = value
+            const removeFile = document.getElementById("cancelInput")
 
-        value !== "" ? removeFile.style.visibility = "visible" : removeFile.style.visibility = "hidden"
-        value !== "" ? verifyFile.disabled = false : verifyFile.disabled = true
-    }
+            document.getElementById("fileNameField").innerHTML = userFile[0].name
 
+            removeFile.style.visibility = "visible"
+
+            storePdf();
+            
+        }
+    }, [userFile])
+    
     const removeUploadedFile = () => {
-        var input = (document.getElementById("fileInput") as HTMLInputElement).value
-        const removeFile = document.getElementById("cancelInput")
-        const verifyFile = document.getElementById("verifyBtn") as HTMLButtonElement | null;
-
-        input = ""
+        setUserFile("")
+        console.log("userFile is null")
         document.getElementById("fileNameField").innerHTML = "No file chosen"
-
-        console.log((document.getElementById("fileNameField") as HTMLInputElement).value)
-
-        input !== "" ? removeFile.style.visibility = "visible" : removeFile.style.visibility = "hidden"
-        input !== "" ? verifyFile.disabled = false : verifyFile.disabled = true
+        const removeFile = document.getElementById("cancelInput")
+        removeFile.style.visibility = "hidden"
     }
 
-    function uploadToSignature(files: FileList) {
-        // get file
-        const uploadedUserFile = files[0]
-        setUserFile(uploadedUserFile) // bisa diapus
 
+    async function storePdf () {
+        // save document to database
+        console.log("---saving doc to db---")
         const formData = new FormData();
-        formData.append('file', uploadedUserFile)
+        formData.append('document', userFile[0])
+        console.log(userFile[0])
 
         const config = {
             method: "POST",
-            url: "/api/usign/uploadFile/",
+            url: "/api/usign/storePdf/",
             data: formData,
         }
-        console.log(files)
 
-        axios(config).then(
-            (res) => {
-                console.log(res)
-                console.log(res.data)
-                console.log(res.data.url)
 
-                // window.location.href = '/signaturepage'
-            }).catch((err) => {
-                console.log(err)
-            }
-            )
+        const response = await axios(config)
+        console.log(response.data)
 
-        navigate('/signaturepage', { replace: true })
     }
+
+    function goToSignature(){
+        navigate('/signaturepage')
+
+    }
+
+    var isOpen = false;
+    function showAndCloseInstruction(){
+        var value = document.getElementById("section");
+        if (isOpen == false){
+            value.style.display = 'block';
+            isOpen = true;
+        }
+        else if (isOpen == true){
+            value.style.display = 'none';
+            isOpen = false;
+        }
+    }
+
 
     //TODO: add more input checks for pdf
     //TODO: Display verify label based on usign
@@ -103,70 +113,71 @@ export default function Home() {
             return <h1>Loading...</h1>
         } else {
             return (
-                <div>
-                    <Header />
 
-                    <div className='dashboard'>
-                        <div className='welcomeText'>
-                            <span className="nameText">Meet your
-                                <br className='mobileShow' /><b className='cursiveText'> E-Notary</b>,
-                                <br className='mobileShow' /> <span className='smallText'> {user.name} </span>
-                            </span>
-                            <br />
-                            <div className='belowName'>
-                                <span className="helpText">What can I help you with today?</span>&emsp;
-                                <span className="needsignature"><br className='mobileShow' />
-                                    <div className='changingText'></div>
-                                </span>
-                            </div>
+            <div>
+            <Header />            
+
+            <div className='dashboard'>
+                <div className='welcomeText'>
+                    <span className ="nameText">Meet your 
+                        <br className='mobileShow' /><b className='cursiveText'> E-Notary</b>, 
+                        <br className='mobileShow' /> <span className='smallText'> {user.name} </span>
+                    </span>
+                    <br/>
+                    <div className='belowName'>
+                        <span className="helpText">What can I help you with today?</span>&emsp;
+                        <span className="needsignature"><br className='mobileShow'/>I need a signature</span>
+                    </div>
+                </div>
+                
+                <form encType="multipart/form-data" action='/api/usign/storePdf' method='post' >
+                    <div className='fileInputWrapper'>
+                        <div className='leftWrapper'>
+                            <p className='fileName' id="fileNameField">No file chosen</p>
                         </div>
 
-                        <form encType="multipart/form-data" action='/api/usign/uploadFile' method='post' >
-                            <div className='fileInputWrapper'>
-                                <div className='leftWrapper'>
-                                    <p className='fileName' id="fileNameField">No file chosen</p>
-                                </div>
+                        <div className='rightWrapper'>
+                            <label htmlFor="fileInput" className='labelInputWrapper'>
+                                <p className="mobileHidden inputBtnLabel">Upload File</p>
+                                <FontAwesomeIcon icon={faUpload} className="inputBtn" />
+                            </label>
+                            <input type="file" id="fileInput" accept="application/pdf" onChange={(e) => {setUserFile(e.target.files)}}/>
+                        </div>
 
-                                <div className='rightWrapper'>
-                                    <label htmlFor="fileInput" className='labelInputWrapper'>
-                                        <p className="mobileHidden inputBtnLabel">Upload File</p>
-                                        <FontAwesomeIcon icon={faUpload} className="inputBtn" />
-                                    </label>
-                                    <input type="file" id="fileInput" accept="application/pdf" onChange={(e) => { displayFileName(e.target.files) }} />
+                    <div className='submitWrapper'>
+                        <div className='addSignBtn'>
+                            <input type="submit" id='signatureBtn' value="Add Your Signature" onClick={goToSignature}></input>
+                        </div>
+                    </div>
+                </form>
+                <div className='instructionContainer'>
+                    <div className='instruction'>
+                        <div className='viewInstruction'>
+                            <button onClick={showAndCloseInstruction} className="caretDownbtn">
+                                How to view my verified signed document?
+                                <FontAwesomeIcon icon={faCaretDown} className="caretDown"/>
+                            </button>
+                        </div>
+                        <div className='instructionWrapper'>
+                            <div className='instructionList' id="section">
+                                <div>1. Open the verified document with Adobe Acrobat Reader</div>
+                                <div>2. Click the signature icon which located at the left side along with the page thumbnail and attachment icon</div>
+                                <div className="photo1">
+                                    <img src = {require('../media/Screenshot1.jpg')}></img>
                                 </div>
-                            </div>
-                            <div id="cancelInput" onClick={removeUploadedFile}>
-                                <p className='removeFileLabel'>Remove File</p>
-                                <FontAwesomeIcon icon={faTrash} />
-                            </div>
-
-                            <div className='submitWrapper'>
-                                <div className='verifyDocBtn'>
-                                    <input type="submit" value="Verify This Document" disabled id='verifyBtn' />
+                                <div>
+                                    <br/>3. Now you can see your signature validation status</div>
+                                <div className="photo2">
+                                    <br/><img src = {require('../media/Screenshot2.jpg')}></img>
                                 </div>
-                                <div className='addSignBtn'>
-                                    <input type="submit" id='signatureBtn' value="Add Your Signature" onClick={() => uploadToSignature(userFile)}></input>
-                                </div>
-                            </div>
-                        </form>
-
-                        <div className='verificationInfo'>
-                            <div className='verifyStatusGood'>
-                                <h3>Document Verified <FontAwesomeIcon icon={faCircleCheck} /></h3>
-                            </div>
-                            <div className='verifyStatusBad'>
-                                <h3>Document Not Verified <FontAwesomeIcon icon={faCircleXmark} /></h3>
                             </div>
                         </div>
                     </div>
+
                 </div>
             )
         }
     }
-
-    //TODO: add more input checks for pdf
-    //TODO: Display verify label based on usign
-    //TODO: pass file to signature page
 
     return (
         <div>
