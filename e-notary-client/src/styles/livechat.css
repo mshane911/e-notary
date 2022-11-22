@@ -75,8 +75,8 @@ body{
 
 .messageField{
     margin: 0;
-    padding: 30px 12px;
-    width: 90%;
+    padding: 8px 12px 30px 12px;
+    width: 100%;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -103,7 +103,44 @@ body{
 
 .chat-message{
     height: 100%;
+    margin: 60px 200px 16% 200px;
 }
+
+.input-doc, #fileNameField, .filename-display{
+    /* background-color: #fff; */
+    width: 100vw;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    justify-content: space-evenly;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.input-doc{
+    margin-top: 8px;
+}
+
+.filename-display{
+    color: #1E2A52;
+    background-color: #fff;
+    padding: 8px 48px;
+    width: 80%;
+}
+
+#fileNameField, .fileName{
+    text-align: left;
+}
+
+.file-label{
+    background-color: #fff;
+    color: #1E2A52;
+    padding: 0 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 
 /* MEDIA QUERY */
 @media only screen and (max-device-width:900px){

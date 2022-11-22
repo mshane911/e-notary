@@ -90,6 +90,15 @@ export function LiveChat() {
         }
     }
 
+    function displayFileName(e: File){
+        setFile(e)
+        var value = (document.getElementById("user-file-upload") as HTMLInputElement).value
+        console.log("file not empty:", value !== "")
+
+        value = value.replace(/.*[\/\\]/, '')
+        document.getElementById("fileNameField").innerHTML = value
+    }
+
     return (
         <div>
             <Header />
@@ -120,6 +129,21 @@ export function LiveChat() {
                 </div>
             </div>
             <div className='form-container'>
+                <form className="upload-field" onSubmit={handleUploadFile}>
+                    <div className='input-doc'>
+                        <div className='filename-display'>
+                            <p id="fileNameField" className='fileName'>No file chosen</p>
+                        </div>
+                        <div className='file-label'>
+                            <label htmlFor='user-file-upload'>
+                                <p className="mobileHidden input-btn-label">Upload</p>
+                                <FontAwesomeIcon icon={faPaperclip} className="inputBtn" />
+                            </label>
+                            <input type="file" id="user-file-upload" accept="application/pdf" onChange={(e) => { displayFileName(e.target.files[0]) }} />
+                        </div>
+                    </div>
+
+                </form>
                 <form className="messageField" onSubmit={handleSendMessage}>
                     <input
                         type="text"
@@ -129,16 +153,6 @@ export function LiveChat() {
                         onChange={(e) => setMessage(e.target.value)}
                     />
                     <button className="sendBtn"><FontAwesomeIcon icon={faPaperPlane} /></button>
-                </form>
-                <form className="upload-field" onSubmit={handleUploadFile}>
-                    <label>
-                        <input type="file" id="file" className='file-upload' onChange={(e) => setFile(e.target.files[0])} />
-                        <i>Attach File</i>
-                    </label>
-                    <button id="upload">
-                        <p className='mobileHidden'>Upload </p>
-                        <FontAwesomeIcon icon={faPaperclip} className="attachIcon"/>
-                    </button>
                 </form>
             </div>
         </div >
