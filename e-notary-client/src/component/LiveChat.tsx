@@ -96,7 +96,7 @@ export function LiveChat() {
         console.log("file not empty:", value !== "")
 
         value = value.replace(/.*[\/\\]/, '')
-        document.getElementById("fileNameField").innerHTML = value
+        value !== "" ? document.getElementById("btn-label").innerHTML = value : document.getElementById("btn-label").innerHTML = "Click here to select a file"
     }
 
     return (
@@ -132,15 +132,15 @@ export function LiveChat() {
                 <form className="upload-field" onSubmit={handleUploadFile}>
                     <div className='input-doc'>
                         <div className='filename-display'>
-                            <p id="fileNameField" className='fileName'>No file chosen</p>
+                        <label htmlFor='user-file-upload'>
+                            <p className="mobileHidden input-btn-label" id="btn-label">Click here to select a file</p>                        
+                        </label>
+                        <input type="file" id="user-file-upload" accept="application/pdf" onChange={(e) => { displayFileName(e.target.files[0]) }} />
                         </div>
-                        <div className='file-label'>
-                            <label htmlFor='user-file-upload'>
-                                <p className="mobileHidden input-btn-label">Upload</p>
-                                <FontAwesomeIcon icon={faPaperclip} className="inputBtn" />
-                            </label>
-                            <input type="file" id="user-file-upload" accept="application/pdf" onChange={(e) => { displayFileName(e.target.files[0]) }} />
-                        </div>
+                        {/* <div className='file-label'> */}
+                            <button className="mobileHidden send-file-btn">Upload                          
+                            </button>
+                        {/* </div> */}
                     </div>
 
                 </form>
