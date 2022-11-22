@@ -1,7 +1,8 @@
 const { getUsers, users } = require('./getUsers');
 const { getRooms, rooms } = require('./getRooms');
 const { writeFile, readFileSync, writeFileSync } = require("fs");
-const path = require('path')
+const path = require('path');
+const axios = require('axios');
 
 //Socket connection
 function socket(io) {
@@ -46,7 +47,9 @@ function socket(io) {
                     console.log("File Upload Success!")
                 }
             });
-            io.to(data.roomname).emit('chat', { username: data.username, message: filePath });
+            io.to(data.roomname).emit('chat', { username: data.username, message: "Uploaded a Document at " + filePath });
+
+
         });
 
         //Broadcasting the user who is typing

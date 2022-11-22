@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React from 'react';
-import { randomUUID } from 'crypto';
 import { FormEvent, useEffect, useState } from 'react';
 import { io, Socket } from "socket.io-client"
 import { ClientChatData } from '../common/types/ClientChatData';
@@ -49,7 +48,21 @@ export function LiveChat() {
         socket.emit('joined-user', {
             username: username,
             roomname: roomname
-        })
+        });
+
+        var config = {
+            headers: {
+                "Content-Type": "application/json",
+                "accept": "application/json"
+            }
+        }
+        axios.post("/api/langcode/createBot", { "botName": username }, config)
+            .then((apiRes) => {
+                localStorage.setItem("chatBotId", apiRes.data.id);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
     });
 
     useEffect(() => {
@@ -74,6 +87,44 @@ export function LiveChat() {
                 roomname: roomname
             })
         }
+
+        var config = {
+            headers: {
+                "Content-Type": "application/json",
+                "accept": "application/json"
+            }
+        }
+
+        var data = {
+            "botId": localStorage.getItem("chatBotId"),
+            "userId": localStorage.getItem("chatRoomId"),
+            "text": message
+        }
+
+        var getMessagesData = {
+            "botId": localStorage.getItem("chatBotId"),
+            "userId": localStorage.getItem("chatRoomId"),
+            "count": 1
+        }
+
+        axios.post("/api/langcode/sendMessageToBot", data, config)
+            .then((apiRes) => {
+                setTimeout(() => {
+                    axios.post("/api/langcode/getMessagesInSession", getMessagesData, config)
+                        .then((apiRes) => {
+                            console.log(messages[messages.length])
+                            setMessages([...messages, { username: "Langcode Bot", message: apiRes.data[0].text }])
+                        })
+                        .catch((err) => {
+                            console.log(err.message);
+                        });
+                }, 1000);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+
+
         setMessage('');
     }
 
@@ -90,15 +141,14 @@ export function LiveChat() {
         }
     }
 
-    function displayFileName(e: File){
+    function displayFileName(e: File) {
         setFile(e)
         var value = (document.getElementById("user-file-upload") as HTMLInputElement).value
         console.log("file not empty:", value !== "")
 
         value = value.replace(/.*[\/\\]/, '')
-        document.getElementById("fileNameField").innerHTML = value
+        value !== "" ? document.getElementById("btn-label").innerHTML = value : document.getElementById("btn-label").innerHTML = "Click here to select a file"
     }
-
     return (
         <div>
             <Header />
@@ -112,7 +162,7 @@ export function LiveChat() {
                         {messages.map((message: { username: string, message: string }) =>
                             message.username === localStorage.getItem('userName') ? (
                                 <div>
-                                    <div className="message__chats" key={message.username + message.message + randomUUID}>
+                                    <div className="message__chats" key={message.username + message.message + Math.floor(Math.random() * 1000)}>
                                         <p className="sender__name">{message.message}</p>
                                     </div>
                                     <div>
@@ -120,7 +170,7 @@ export function LiveChat() {
                                     </div>
                                 </div>
                             ) : (
-                                <div className="message__chats" key={message.username + message.message + randomUUID}>
+                                <div className="message__chats" key={message.username + message.message + Math.floor(Math.random() * 1000)}>
                                     <p><b>{message.username}:</b> {message.message}</p>
                                 </div>
                             )
@@ -132,15 +182,15 @@ export function LiveChat() {
                 <form className="upload-field" onSubmit={handleUploadFile}>
                     <div className='input-doc'>
                         <div className='filename-display'>
-                            <p id="fileNameField" className='fileName'>No file chosen</p>
-                        </div>
-                        <div className='file-label'>
                             <label htmlFor='user-file-upload'>
-                                <p className="mobileHidden input-btn-label">Upload</p>
-                                <FontAwesomeIcon icon={faPaperclip} className="inputBtn" />
+                                <p className="mobileHidden input-btn-label" id="btn-label">Click here to select a file</p>
                             </label>
                             <input type="file" id="user-file-upload" accept="application/pdf" onChange={(e) => { displayFileName(e.target.files[0]) }} />
                         </div>
+                        {/* <div className='file-label'> */}
+                        <button className="mobileHidden send-file-btn">Upload
+                        </button>
+                        {/* </div> */}
                     </div>
 
                 </form>

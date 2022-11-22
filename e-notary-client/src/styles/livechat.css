@@ -127,6 +127,7 @@ body{
     background-color: #fff;
     padding: 8px 48px;
     width: 80%;
+    cursor: pointer;
 }
 
 #fileNameField, .fileName{
@@ -138,9 +139,31 @@ body{
     color: #1E2A52;
     padding: 0 8px;
     border-radius: 8px;
-    cursor: pointer;
 }
 
+.input-btn-label{
+    margin: 8px 24px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.filename-display:hover{
+    background-color: #A9B4C2;
+}
+
+.send-file-btn{
+    /* width:fit-content; */
+    padding: 8px 24px;
+    background-color: #A9B4C2;
+    color: #1E2A52;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+}
+
+.send-file-btn:hover{
+    background-color: #d3d3d3;
+}
 
 /* MEDIA QUERY */
 @media only screen and (max-device-width:900px){
