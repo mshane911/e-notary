@@ -125,7 +125,7 @@ input[type="file"] {
 
 .verifyDocBtn, .addSignBtn{
     display: inline-block;
-    width: calc(50% - 72px);
+    width: calc(100% - 130px);
     box-sizing: border-box;
     margin: 0 12px;
 }

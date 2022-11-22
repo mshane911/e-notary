@@ -1,5 +1,9 @@
+.all{
+    overflow-x: hidden;
+}
+
 .fileinfo{
-    margin: 0px 48px 0 48px;
+    margin: 40px 48px 0 48px;
     box-sizing: border-box;
     color:#1E2A52;
 }
@@ -70,7 +74,115 @@ input{
     border:none;
 }
 
+.middleContainerr{
+    display: flex;
+    width: 100%;
+}
+
+.docContainer{
+    float: left;
+    margin: 48px 0px 0 80px;
+    width: 40%;
+}
+
+.leftUploadDoc{
+    width: 100%;
+    border:#1E2A52 solid;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.leftUploadDoc .leftWrapper{
+    width: 50%;
+}
+
+.leftUploadDoc  .rightWrapper{
+    width: 50%;
+}
+
+.rightUploadSign .leftWrapper{
+    width: 50%;
+}
+
+.rightUploadSign  .rightWrapper{
+    width: 50%;
+}
+
+.signContainer{
+    float: right;
+    width: 40%;
+    margin-top: 48px;
+    margin-right: 80px;
+}
+
+.rightUploadSign{
+    width: 100%;
+    border:#1E2A52 solid;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.removeSignLabel, .removeDocLabel{
+    display: inline-block;
+}
+
+.cancelDocClass{
+    color: transparent;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    visibility: hidden;
+    padding: 0 16px;
+    cursor: pointer;
+    float: right;
+}
+
+.cancelSignClass{
+    width: 50%;
+    color: #B20D30;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    visibility: hidden;
+    padding: 0 16px;
+    cursor: pointer;
+    float: right;
+}
+
+.cancelDocClass p, .cancelSignClass p{
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.customSpacing{
+    border-color: #A9B4C2;
+    border-top-width: 1px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+.stampX, .stampY{
+    width: 46%;
+}
+
+.stampX{
+    float: left;
+}
+
+.stampY{
+    float: right;
+}
+
 /* MEDIA QUERIES */
 @media only screen and (max-device-width: 667px){
     .col-sm-12{width:100%;float:left;margin:0;}
+    .leftUploadDoc, .rightUploadSign{display: flex;align-items: center;justify-content: space-between;padding:0 16px;}
 }
